@@ -7,3 +7,4 @@
     2. ADO.NET
         1. What is ADO.NET?
         2. ADO.NET Framework Data Providers
+        3. ADO.NET Architecture (Components)
