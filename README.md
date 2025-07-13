@@ -18,3 +18,4 @@
             - [Restore Sample Database](ConsoleApplications/ConsoleApplications/Database)
             1. [Retrieve Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data)
                 1. [Get All Contacts](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_1_get_all_contacts)
+                2. [Parameterized Query](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_2_parameterized_query)

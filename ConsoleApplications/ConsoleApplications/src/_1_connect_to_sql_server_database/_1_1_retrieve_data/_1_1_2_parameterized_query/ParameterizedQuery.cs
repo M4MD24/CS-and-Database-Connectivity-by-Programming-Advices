@@ -2,23 +2,32 @@ using System;
 using System.Data.SqlClient;
 using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.Utilities;
 
-namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_1_get_all_contacts;
+namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_2_parameterized_query;
 
-public class GetAllContacts {
-    public static void printAllContacts() {
+public class ParameterizedQuery {
+    public static void printAllContactsWithFirstName(
+        string targetFirstName
+    ) {
         Console.WriteLine(
-            "~{ All Contacts }~" + Environment.NewLine +
-            ""
+            "~{ All Contacts }~" + Environment.NewLine
         );
 
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string SELECT_ALL_CONTACTS = "SELECT * FROM Contacts";
-        const string QUERY               = SELECT_ALL_CONTACTS;
+        const string SELECT_ALL_CONTACTS = """
+                                           SELECT *
+                                           FROM Contacts
+                                           WHERE FirstName = @targetFirstName
+                                           """;
+        const string QUERY = SELECT_ALL_CONTACTS;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@targetFirstName",
+            targetFirstName
         );
 
         try {
@@ -68,9 +77,11 @@ public class GetAllContacts {
         );
     }
 
-    public static void main(
+    public static void Main(
         string[] args
     ) {
-        printAllContacts();
+        printAllContactsWithFirstName(
+            "Emily"
+        );
     }
 }
