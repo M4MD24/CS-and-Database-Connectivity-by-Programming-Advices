@@ -5,7 +5,7 @@ using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.U
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_4_retrieve_a_single_value;
 
 public class RetrieveA_SingleValue {
-    public static void Main(
+    public static void main(
         string[] args
     ) {
         Console.Write(
