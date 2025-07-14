@@ -5,11 +5,11 @@ using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.U
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_2_parameterized_query;
 
 public class ParameterizedQuery {
-    public static void printAllContactsWithFirstName(
+    public static void printContactsWithFirstName(
         string targetFirstName
     ) {
         Console.WriteLine(
-            "~{ All Contacts }~" + Environment.NewLine
+            "~{ All Contacts with First Name }~" + Environment.NewLine
         );
 
         SqlConnection sqlConnection = new SqlConnection(
@@ -77,10 +77,10 @@ public class ParameterizedQuery {
         );
     }
 
-    public static void Main(
+    public static void main(
         string[] args
     ) {
-        printAllContactsWithFirstName(
+        printContactsWithFirstName(
             "Emily"
         );
     }
