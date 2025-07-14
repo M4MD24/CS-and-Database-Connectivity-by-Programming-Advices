@@ -20,3 +20,4 @@
                 1. [Get All Contacts](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_1_get_all_contacts)
                 2. [Parameterized Query](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_2_parameterized_query)
                 3. [Parameterized Query With "Like"](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_3_parameterized_query_with_like)
+                4. [Retrieve a Single Value (ExecuteScalar)](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_4_retrieve_a_single_value)

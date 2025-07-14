@@ -5,7 +5,7 @@ using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.U
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_3_parameterized_query_with_like;
 
 public class ParameterizedQueryWithLike {
-    public static void Main(
+    public static void main(
         string[] args
     ) {
         printContactsStartsWithInFirstName(
