@@ -1,11 +1,11 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.Utilities;
+using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_5_find_single_contact;
 
 public class FindSingleContact {
-    public static void Main(
+    public static void main(
         string[] args
     ) {
         printContact(
@@ -15,18 +15,18 @@ public class FindSingleContact {
         );
     }
 
-    private static Person getContactByContactID(
+    private static Contact getContactByContactID(
         int contactID
     ) {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string SELECT_ALL_CONTACTS = """
+        const string SELECT_CONTACT_BY_CONTACT_ID = """
                                            SELECT *
                                            FROM Contacts
                                            WHERE ContactID = @contactID
                                            """;
-        const string QUERY = SELECT_ALL_CONTACTS;
+        const string QUERY = SELECT_CONTACT_BY_CONTACT_ID;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection
@@ -41,11 +41,11 @@ public class FindSingleContact {
         );
     }
 
-    private static Person getContact(
+    private static Contact getContact(
         ref SqlConnection sqlConnection,
         ref SqlCommand    sqlCommand
     ) {
-        Person? person = null;
+        Contact? contact = null;
 
         try {
             sqlConnection.Open();
@@ -58,7 +58,7 @@ public class FindSingleContact {
                 string phone     = (string) sqlDataReader["Phone"];
                 string address   = (string) sqlDataReader["Address"];
                 int    countryID = (int) sqlDataReader["CountryID"];
-                person = new Person(
+                contact = new Contact(
                     contactID,
                     firstName,
                     lastName,
@@ -77,25 +77,25 @@ public class FindSingleContact {
             );
         }
 
-        return person!;
+        return contact!;
     }
 
     private static void printContact(
-        Person? person
+        Contact? contact
     ) {
-        if (person == null)
+        if (contact == null)
             Console.Write(
                 "Nothing to Show!"
             );
         else
             Console.Write(
-                $"Contact ID: {person.contactID}" + Environment.NewLine +
-                $"First Name: {person.firstName}" + Environment.NewLine +
-                $"Last Name: {person.lastName}"   + Environment.NewLine +
-                $"Email: {person.email}"          + Environment.NewLine +
-                $"Phone: {person.phone}"          + Environment.NewLine +
-                $"Address: {person.address}"      + Environment.NewLine +
-                $"Country ID: {person.countryID}"
+                $"Contact ID: {contact.contactID}" + Environment.NewLine +
+                $"First Name: {contact.firstName}" + Environment.NewLine +
+                $"Last Name: {contact.lastName}"   + Environment.NewLine +
+                $"Email: {contact.email}"          + Environment.NewLine +
+                $"Phone: {contact.phone}"          + Environment.NewLine +
+                $"Address: {contact.address}"      + Environment.NewLine +
+                $"Country ID: {contact.countryID}"
             );
     }
 }

@@ -1,4 +1,4 @@
-namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.Utilities;
+namespace ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
 public static class Constants {
     private const string SERVER_NAME   = "M4MD24";
