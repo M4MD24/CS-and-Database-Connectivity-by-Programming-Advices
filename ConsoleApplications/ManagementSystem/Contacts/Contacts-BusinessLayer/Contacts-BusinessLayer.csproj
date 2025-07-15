@@ -3,13 +3,9 @@
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <RootNamespace>Contacts_BusinessLayer</RootNamespace>
-        <ImplicitUsings>enable</ImplicitUsings>
+        <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
     </PropertyGroup>
-
-    <ItemGroup>
-      <Folder Include="src\" />
-    </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\Contacts-DataAccessLayer\Contacts-DataAccessLayer.csproj" />
