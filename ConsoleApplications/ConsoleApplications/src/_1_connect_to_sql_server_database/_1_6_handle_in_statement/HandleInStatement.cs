@@ -3,7 +3,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using ConsoleApplications.Utilities;
 
-namespace ConsoleApplications._2_handle_in_statement;
+namespace ConsoleApplications._1_connect_to_sql_server_database._1_6_handle_in_statement;
 
 public class HandleInStatement {
     public static void Main(
