@@ -22,3 +22,4 @@
                 3. [Parameterized Query With "Like"](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_3_parameterized_query_with_like)
                 4. [Retrieve a Single Value (ExecuteScalar)](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_4_retrieve_a_single_value)
                 5. [Find Single Contact](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_5_find_single_contact)
+            2. [Insert/Add Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_2_insert_and_add_data)

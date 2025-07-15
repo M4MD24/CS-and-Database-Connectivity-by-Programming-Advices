@@ -1,6 +1,6 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.Utilities;
+using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_3_parameterized_query_with_like;
 
@@ -40,7 +40,7 @@ public class ParameterizedQueryWithLike {
                 string address   = (string) sqlDataReader["Address"];
                 int    countryID = (int) sqlDataReader["CountryID"];
                 printContact(
-                    new Person(
+                    new Contact(
                         contactID,
                         firstName,
                         lastName,
@@ -72,12 +72,12 @@ public class ParameterizedQueryWithLike {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string SELECT_ALL_CONTACTS = """
-                                           SELECT *
-                                           FROM Contacts
-                                           WHERE FirstName LIKE '' + @targetText + '%'
-                                           """;
-        const string QUERY = SELECT_ALL_CONTACTS;
+        const string SELECT_CONTACTS_STARTS_WITH_IN_FIRST_NAME = """
+                                                                 SELECT *
+                                                                 FROM Contacts
+                                                                 WHERE FirstName LIKE '' + @targetText + '%'
+                                                                 """;
+        const string QUERY = SELECT_CONTACTS_STARTS_WITH_IN_FIRST_NAME;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection
@@ -94,16 +94,16 @@ public class ParameterizedQueryWithLike {
     }
 
     private static void printContact(
-        Person person
+        Contact contact
     ) {
         Console.WriteLine(
-            $"Contact ID: {person.contactID}" + Environment.NewLine +
-            $"First Name: {person.firstName}" + Environment.NewLine +
-            $"Last Name: {person.lastName}"   + Environment.NewLine +
-            $"Email: {person.email}"          + Environment.NewLine +
-            $"Phone: {person.phone}"          + Environment.NewLine +
-            $"Address: {person.address}"      + Environment.NewLine +
-            $"Country ID: {person.countryID}" + Environment.NewLine
+            $"Contact ID: {contact.contactID}" + Environment.NewLine +
+            $"First Name: {contact.firstName}" + Environment.NewLine +
+            $"Last Name: {contact.lastName}"   + Environment.NewLine +
+            $"Email: {contact.email}"          + Environment.NewLine +
+            $"Phone: {contact.phone}"          + Environment.NewLine +
+            $"Address: {contact.address}"      + Environment.NewLine +
+            $"Country ID: {contact.countryID}" + Environment.NewLine
         );
     }
 
@@ -118,12 +118,12 @@ public class ParameterizedQueryWithLike {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string SELECT_ALL_CONTACTS = """
-                                           SELECT *
-                                           FROM Contacts
-                                           WHERE FirstName LIKE '%' + @targetText + ''
-                                           """;
-        const string QUERY = SELECT_ALL_CONTACTS;
+        const string SELECT_CONTACTS_ENDS_WITH_IN_FIRST_NAME = """
+                                                               SELECT *
+                                                               FROM Contacts
+                                                               WHERE FirstName LIKE '%' + @targetText + ''
+                                                               """;
+        const string QUERY = SELECT_CONTACTS_ENDS_WITH_IN_FIRST_NAME;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection
@@ -150,12 +150,12 @@ public class ParameterizedQueryWithLike {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string SELECT_ALL_CONTACTS = """
-                                           SELECT *
-                                           FROM Contacts
-                                           WHERE FirstName LIKE '%' + @targetText + '%'
-                                           """;
-        const string QUERY = SELECT_ALL_CONTACTS;
+        const string SELECT_CONTACTS_CONTAINS_WITH_IN_FIRST_NAME = """
+                                                                   SELECT *
+                                                                   FROM Contacts
+                                                                   WHERE FirstName LIKE '%' + @targetText + '%'
+                                                                   """;
+        const string QUERY = SELECT_CONTACTS_CONTAINS_WITH_IN_FIRST_NAME;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection

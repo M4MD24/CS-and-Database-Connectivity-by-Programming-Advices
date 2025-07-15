@@ -1,6 +1,6 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data.Utilities;
+using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_1_get_all_contacts;
 
@@ -33,7 +33,7 @@ public class GetAllContacts {
                 string address   = (string) sqlDataReader["Address"];
                 int    countryID = (int) sqlDataReader["CountryID"];
                 printContact(
-                    new Person(
+                    new Contact(
                         contactID,
                         firstName,
                         lastName,
@@ -55,16 +55,16 @@ public class GetAllContacts {
     }
 
     private static void printContact(
-        Person person
+        Contact contact
     ) {
         Console.WriteLine(
-            $"Contact ID: {person.contactID}" + Environment.NewLine +
-            $"First Name: {person.firstName}" + Environment.NewLine +
-            $"Last Name: {person.lastName}"   + Environment.NewLine +
-            $"Email: {person.email}"          + Environment.NewLine +
-            $"Phone: {person.phone}"          + Environment.NewLine +
-            $"Address: {person.address}"      + Environment.NewLine +
-            $"Country ID: {person.countryID}" + Environment.NewLine
+            $"Contact ID: {contact.contactID}" + Environment.NewLine +
+            $"First Name: {contact.firstName}" + Environment.NewLine +
+            $"Last Name: {contact.lastName}"   + Environment.NewLine +
+            $"Email: {contact.email}"          + Environment.NewLine +
+            $"Phone: {contact.phone}"          + Environment.NewLine +
+            $"Address: {contact.address}"      + Environment.NewLine +
+            $"Country ID: {contact.countryID}" + Environment.NewLine
         );
     }
 
