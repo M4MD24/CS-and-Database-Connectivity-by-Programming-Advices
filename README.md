@@ -24,3 +24,4 @@
                 5. [Find Single Contact](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_1_retrieve_data/_1_1_5_find_single_contact)
             2. [Insert/Add Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_2_insert_and_add_data)
             3. [Insert/Add Data and Retrieve Auto Number after Inserting/Adding Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_3_insert_and_add_data_and_retrieve_auto_number_after_inserting_and_adding_data)
+            4. [Update Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_4_update_data)

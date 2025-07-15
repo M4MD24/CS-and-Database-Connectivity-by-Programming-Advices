@@ -2,39 +2,50 @@ using System;
 using System.Data.SqlClient;
 using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
-namespace ConsoleApplications._1_connect_to_sql_server_database._1_3_insert_and_add_data_and_retrieve_auto_number_after_inserting_and_adding_data;
+namespace ConsoleApplications._1_connect_to_sql_server_database._1_4_update_data;
 
-public class InsertAndAddDataAndRetrieveAutoNumberAfterInsertingAndAddingData {
-    public static void main(
+public class UpdateData {
+    public static void Main(
         string[] args
     ) {
-        addContact(
+        updateContact(
+            2,
             new Contact(
                 "Someone",
                 "Example",
                 "SomeoneExample@Example.Example",
                 "+123456789",
                 "Example/Thing",
-                1
+                2
             )
         );
     }
 
-    private static void addContact(
+    private static void updateContact(
+        int     contactID,
         Contact contact
     ) {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string ADD_CONTACT_AND_GET_SCOPE_IDENTITY = """
-                                                          INSERT INTO Contacts (FirstName, LastName, Email, Phone, Address, CountryID)
-                                                          VALUES (@FirstName, @LastName, @Email, @Phone, @Address, @CountryID)
-                                                          SELECT SCOPE_IDENTITY()
-                                                          """;
-        const string QUERY = ADD_CONTACT_AND_GET_SCOPE_IDENTITY;
+        const string UPDATE_DATA = """
+                                   UPDATE Contacts
+                                   SET FirstName = @FirstName,
+                                   LastName = @LastName,
+                                   Email = @Email,
+                                   Phone = @Phone,
+                                   Address = @Address,
+                                   CountryID = @CountryID
+                                   WHERE ContactID = @contactID
+                                   """;
+        const string QUERY = UPDATE_DATA;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@contactID",
+            contactID
         );
         sqlCommand.Parameters.AddWithValue(
             "@FirstName",
@@ -63,15 +74,14 @@ public class InsertAndAddDataAndRetrieveAutoNumberAfterInsertingAndAddingData {
 
         try {
             sqlConnection.Open();
-            object? result = sqlCommand.ExecuteScalar();
+            int rowAffected = sqlCommand.ExecuteNonQuery();
 
             Console.Write(
-                result != null && int.TryParse(
-                    result.ToString(),
-                    out int insertedID
-                )
-                        ? $"\u001B[32mAdded successfully\u001B[0m, Contact ID = {insertedID}"
-                        : "\u001B[31mAdded failed\u001B[0m"
+                (
+                    rowAffected > 0
+                            ? $"\u001B[32mUpdated successfully"
+                            : "\u001B[31mUpdated failed") +
+                "\u001B[0m"
             );
 
             sqlConnection.Close();

@@ -62,7 +62,7 @@ public class InsertAndAddData {
 
         try {
             sqlConnection.Open();
-            int? rowAffected = sqlCommand.ExecuteNonQuery();
+            int rowAffected = sqlCommand.ExecuteNonQuery();
 
             Console.Write(
                 (rowAffected > 0
