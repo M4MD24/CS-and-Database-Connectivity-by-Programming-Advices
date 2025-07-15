@@ -5,10 +5,10 @@ using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_4_update_data;
 
 public class UpdateData {
-    public static void Main(
+    public static void main(
         string[] args
     ) {
-        updateContact(
+        updateContactByContactID(
             2,
             new Contact(
                 "Someone",
@@ -21,7 +21,7 @@ public class UpdateData {
         );
     }
 
-    private static void updateContact(
+    private static void updateContactByContactID(
         int     contactID,
         Contact contact
     ) {
