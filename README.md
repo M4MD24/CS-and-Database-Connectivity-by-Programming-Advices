@@ -26,3 +26,6 @@
             3. [Insert/Add Data and Retrieve Auto Number after Inserting/Adding Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_3_insert_and_add_data_and_retrieve_auto_number_after_inserting_and_adding_data)
             4. [Update Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_4_update_data)
             5. [Delete Data](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_5_delete_data)
+            6. [Handle In Statement](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_6_handle_in_statement)
+        2. What are CRUD Operations?
+        3. What is 3-Tier Architecture? and Why?
