@@ -2,10 +2,10 @@ using System;
 using System.Data.SqlClient;
 using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
-namespace ConsoleApplications._1_connect_to_sql_server_database._1_2_insert_and_add_data;
+namespace ConsoleApplications._1_connect_to_sql_server_database._1_3_insert_and_add_data_and_retrieve_auto_number_after_inserting_and_adding_data;
 
-public class InsertAndAddData {
-    public static void main(
+public class InsertAndAddDataAndRetrieveAutoNumberAfterInsertingAndAddingData {
+    public static void Main(
         string[] args
     ) {
         addContact(
@@ -26,11 +26,12 @@ public class InsertAndAddData {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.CONNECTIVITY
         );
-        const string ADD_CONTACT = """
-                                   INSERT INTO Contacts (FirstName, LastName, Email, Phone, Address, CountryID)
-                                   VALUES (@FirstName, @LastName, @Email, @Phone, @Address, @CountryID)
-                                   """;
-        const string QUERY = ADD_CONTACT;
+        const string ADD_CONTACT_AND_GET_SCOPE_IDENTITY = """
+                                                          INSERT INTO Contacts (FirstName, LastName, Email, Phone, Address, CountryID)
+                                                          VALUES (@FirstName, @LastName, @Email, @Phone, @Address, @CountryID)
+                                                          SELECT SCOPE_IDENTITY()
+                                                          """;
+        const string QUERY = ADD_CONTACT_AND_GET_SCOPE_IDENTITY;
         SqlCommand sqlCommand = new SqlCommand(
             QUERY,
             sqlConnection
@@ -62,12 +63,16 @@ public class InsertAndAddData {
 
         try {
             sqlConnection.Open();
-            int? rowAffected = sqlCommand.ExecuteNonQuery();
+            object? result = sqlCommand.ExecuteScalar();
 
             Console.Write(
-                (rowAffected > 0
-                         ? "\u001B[32mAdded successfully"
-                         : "\u001B[31mAdded failed") +
+                (
+                    result != null && int.TryParse(
+                        result.ToString(),
+                        out int insertedID
+                    )
+                            ? $"\u001B[32mAdded successfully\u001B[0m, Contact ID = {insertedID}"
+                            : "\u001B[31mAdded failed") +
                 "\u001B[0m"
             );
 
