@@ -29,3 +29,7 @@
             6. [Handle In Statement](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_6_handle_in_statement)
         2. What are CRUD Operations?
         3. What is 3-Tier Architecture? and Why?
+2. Projects
+    1. [Console Applications](ConsoleApplications)
+        1. [Management System](ConsoleApplications/ManagementSystem)
+            1. [Contacts](ConsoleApplications/ManagementSystem/Contacts)
