@@ -1,4 +1,4 @@
-namespace ConsoleApplications._1_connect_to_sql_server_database.Utilities;
+namespace ConsoleApplications.Utilities;
 
 public class Contact {
     public int?    contactID { get; }

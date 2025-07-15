@@ -1,6 +1,6 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
+using ConsoleApplications.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_4_update_data;
 
@@ -79,7 +79,7 @@ public class UpdateData {
             Console.Write(
                 (
                     rowAffected > 0
-                            ? $"\u001B[32mUpdated successfully"
+                            ? "\u001B[32mUpdated successfully"
                             : "\u001B[31mUpdated failed") +
                 "\u001B[0m"
             );

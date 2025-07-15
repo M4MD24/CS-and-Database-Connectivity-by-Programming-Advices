@@ -1,11 +1,11 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
+using ConsoleApplications.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_5_delete_data;
 
 public class DeleteData {
-    public static void Main(
+    public static void main(
         string[] args
     ) {
         deleteContactByContactID(
@@ -40,7 +40,7 @@ public class DeleteData {
             Console.Write(
                 (
                     rowAffected > 0
-                            ? $"\u001B[32mDeleted successfully"
+                            ? "\u001B[32mDeleted successfully"
                             : "\u001B[31mDeleted failed") +
                 "\u001B[0m"
             );
