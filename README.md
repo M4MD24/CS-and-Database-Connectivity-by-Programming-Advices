@@ -38,3 +38,4 @@
                 3. Update Contact by Contact ID
                 4. Delete Contact by Contact ID
                 5. List Contacts
+                6. Is Contact Exist by Contact ID

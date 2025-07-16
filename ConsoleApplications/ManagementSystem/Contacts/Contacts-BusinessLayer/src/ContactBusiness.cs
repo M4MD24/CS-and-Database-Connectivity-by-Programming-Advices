@@ -16,7 +16,7 @@ public class ContactBusiness {
     public static void addNewContact(
         Contact contact
     ) {
-        Console.Write(
+        Console.WriteLine(
             (
                 ContactDataAccess.addNewContact(
                     ref contact
@@ -32,7 +32,7 @@ public class ContactBusiness {
         int     contactID,
         Contact contact
     ) {
-        Console.Write(
+        Console.WriteLine(
             (
                 ContactDataAccess.updateContactByContactID(
                     ref contactID,
@@ -48,19 +48,43 @@ public class ContactBusiness {
     public static void deleteContactByContactID(
         int contactID
     ) {
-        Console.Write(
-            (
-                ContactDataAccess.deleteContactByContactID(
-                    ref contactID
-                ) > 0
-                        ? "\u001B[32mDeleted successfully"
-                        : "\u001B[31mDeleted failed"
-            ) +
-            "\u001B[0m"
-        );
+        if (
+            ContactDataAccess.isContactExistByContactID(
+                ref contactID
+            )
+        ) {
+            Console.WriteLine(
+                (
+                    ContactDataAccess.deleteContactByContactID(
+                        ref contactID
+                    ) > 0
+                            ? "\u001B[32mDeleted successfully"
+                            : "\u001B[31mDeleted failed"
+                ) +
+                "\u001B[0m"
+            );
+        } else
+            Console.WriteLine(
+                "\u001B[31mContact isn't Found"
+            );
     }
 
     public static List<Contact> getAllContacts() {
         return ContactDataAccess.getAllContacts();
+    }
+
+    public static void isContactExistByContactID(
+        int contactID
+    ) {
+        Console.WriteLine(
+            (
+                ContactDataAccess.isContactExistByContactID(
+                    ref contactID
+                )
+                        ? "\u001B[32mContact is Found"
+                        : "\u001B[31mContact isn't Found"
+            ) +
+            "\u001B[0m"
+        );
     }
 }

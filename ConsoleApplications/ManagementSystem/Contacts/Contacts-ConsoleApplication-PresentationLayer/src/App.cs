@@ -61,11 +61,9 @@ public class App {
         */
 
         // Delete Contact by Contact ID
-        /*
         Contacts_BusinessLayer.ContactBusiness.deleteContactByContactID(
             5
         );
-        */
 
         // Delete Contact by Contact ID
         /*
@@ -73,6 +71,13 @@ public class App {
             printContact(
                 contact
             );
+        */
+
+        // Is Contact Exist by Contact ID
+        /*
+        Contacts_BusinessLayer.ContactBusiness.isContactExistByContactID(
+            4
+        );
         */
     }
 

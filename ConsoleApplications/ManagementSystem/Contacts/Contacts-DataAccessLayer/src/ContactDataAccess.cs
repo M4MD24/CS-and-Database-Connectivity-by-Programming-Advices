@@ -257,4 +257,46 @@ public class ContactDataAccess {
 
         return contacts;
     }
+
+    public static bool isContactExistByContactID(
+        ref int contactID
+    ) {
+        SqlConnection sqlConnection = new SqlConnection(
+            Constants.DATABASE_CONNECTIVITY
+        );
+        const string IS_CONTACT_EXIST_BY_CONTACT_ID = """
+                                                      SELECT Found = 1
+                                                      FROM Contacts
+                                                      WHERE ContactID = @contactID
+                                                      """;
+        const string QUERY = IS_CONTACT_EXIST_BY_CONTACT_ID;
+        SqlCommand sqlCommand = new SqlCommand(
+            QUERY,
+            sqlConnection
+        );
+
+        sqlCommand.Parameters.AddWithValue(
+            "@contactID",
+            contactID
+        );
+
+        bool isExist = false;
+
+        try {
+            sqlConnection.Open();
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            isExist = sqlDataReader.HasRows;
+            sqlDataReader.Close();
+
+            return isExist;
+        } catch (Exception exception) {
+            Console.WriteLine(
+                exception.Message
+            );
+            return isExist;
+        } finally {
+            sqlConnection.Close();
+        }
+    }
 }
