@@ -7,7 +7,8 @@ public class App {
     public static void Main(
         string[] args
     ) {
-        /* Find Contact by Contact ID
+        // Find Contact by Contact ID
+        /*
         Contact? contact = Contacts_BusinessLayer.ContactBusiness.findContactByContactID(
             1
         );
@@ -20,8 +21,29 @@ public class App {
         );
         */
 
-        /* Add New Contact
-        Contacts_BusinessLayer.ContactBusiness.addNewData(
+        // Add New Contact
+        /*
+        Contacts_BusinessLayer.ContactBusiness.addNewContact(
+            new Contact(
+                "Mohamed",
+                "Sadawy",
+                new DateTime(
+                    2003,
+                    6,
+                    9
+                ),
+                "m4md24@gmail.com",
+                "+201555400034",
+                "Thing",
+                1
+            )
+        );
+        */
+
+        // Update Contact by Contact ID
+        /*
+        Contacts_BusinessLayer.ContactBusiness.updateContactByContactID(
+            5,
             new Contact(
                 "Mohamed",
                 "Sadawy",

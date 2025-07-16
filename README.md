@@ -35,3 +35,4 @@
             1. [Contacts](ConsoleApplications/ManagementSystem/Contacts)
                 1. Find Contact by Contact ID
                 2. Add New Contact
+                3. Update Contact by Contact ID

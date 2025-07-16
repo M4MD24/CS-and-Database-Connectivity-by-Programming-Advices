@@ -5,56 +5,6 @@ using Contacts_DataAccessLayer.Utilities;
 namespace Contacts_DataAccessLayer;
 
 public class ContactDataAccess {
-    public static Contact? getAllContacts() {
-        SqlConnection sqlConnection = new SqlConnection(
-            Constants.DATABASE_CONNECTIVITY
-        );
-        const string SELECT_ALL_CONTACTS = """
-                                           SELECT *
-                                           FROM Contacts
-                                           """;
-        const string QUERY = SELECT_ALL_CONTACTS;
-        SqlCommand sqlCommand = new SqlCommand(
-            QUERY,
-            sqlConnection
-        );
-
-        try {
-            sqlConnection.Open();
-            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
-            while (sqlDataReader.Read()) {
-                int      contactID   = (int) sqlDataReader["ContactID"];
-                string   firstName   = (string) sqlDataReader["FirstName"];
-                string   lastName    = (string) sqlDataReader["LastName"];
-                DateTime dateOfBirth = (DateTime) sqlDataReader["DateOfBirth"];
-                string   email       = (string) sqlDataReader["Email"];
-                string   phone       = (string) sqlDataReader["Phone"];
-                string   address     = (string) sqlDataReader["Address"];
-                int      countryID   = (int) sqlDataReader["CountryID"];
-                return new Contact(
-                    contactID,
-                    firstName,
-                    lastName,
-                    dateOfBirth,
-                    email,
-                    phone,
-                    address,
-                    countryID
-                );
-            }
-
-            sqlDataReader.Close();
-        } catch (Exception exception) {
-            Console.WriteLine(
-                exception.Message
-            );
-        } finally {
-            sqlConnection.Close();
-        }
-
-        return null;
-    }
-
     public static Contact? getContactByContactID(
         int targetContactID
     ) {
@@ -114,17 +64,63 @@ public class ContactDataAccess {
     public static int addNewContact(
         Contact contact
     ) {
+        const string ADD_NEW_CONTACT = """
+                                       INSERT INTO Contacts (FirstName, LastName, DateOfBirth, Email, Phone, Address, CountryID)
+                                       VALUES (@firstName, @lastName, @dateOfBirth, @email, @phone, @address, @countryID)
+                                       """;
+
+        return saveContact(
+            ref contact,
+            ADD_NEW_CONTACT
+        );
+    }
+
+    public static int updateContactByContactID(
+        int     contactID,
+        Contact updatedContact
+    ) {
+        Contact? contact = getContactByContactID(
+            contactID
+        );
+        if (
+            contact == null
+        )
+            return 0;
+
+        const string UPDATE_DATA = """
+                                   UPDATE Contacts
+                                   SET FirstName = @firstName,
+                                   LastName = @lastName,
+                                   DateOfBirth = @dateOfBirth,
+                                   Email = @email,
+                                   Phone = @phone,
+                                   Address = @address,
+                                   CountryID = @countryID
+                                   WHERE ContactID = @contactID
+                                   """;
+
+        updatedContact.contactID = contactID;
+        return saveContact(
+            ref updatedContact,
+            UPDATE_DATA
+        );
+    }
+
+    private static int saveContact(
+        ref Contact contact,
+        string      query
+    ) {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.DATABASE_CONNECTIVITY
         );
-        const string ADD_CONTACT = """
-                                   INSERT INTO Contacts (FirstName, LastName, DateOfBirth, Email, Phone, Address, CountryID)
-                                   VALUES (@firstName, @lastName, @dateOfBirth, @email, @phone, @address, @countryID)
-                                   """;
-        const string QUERY = ADD_CONTACT;
+
         SqlCommand sqlCommand = new SqlCommand(
-            QUERY,
+            query,
             sqlConnection
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@contactID",
+            contact.contactID
         );
         sqlCommand.Parameters.AddWithValue(
             "@firstName",
