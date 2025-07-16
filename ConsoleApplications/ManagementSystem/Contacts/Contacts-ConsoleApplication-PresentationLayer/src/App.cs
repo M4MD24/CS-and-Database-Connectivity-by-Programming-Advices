@@ -66,5 +66,28 @@ public class App {
             5
         );
         */
+
+        // Delete Contact by Contact ID
+        /*
+        foreach (Contact contact in Contacts_BusinessLayer.ContactBusiness.getAllContacts())
+            printContact(
+                contact
+            );
+        */
+    }
+
+    private static void printContact(
+        Contact contact
+    ) {
+        Console.WriteLine(
+            $"Contact ID: {contact.contactID}"      + Environment.NewLine +
+            $"First Name: {contact.firstName}"      + Environment.NewLine +
+            $"Last Name: {contact.lastName}"        + Environment.NewLine +
+            $"Date of Birth: {contact.dateOfBirth}" + Environment.NewLine +
+            $"Email: {contact.email}"               + Environment.NewLine +
+            $"Phone: {contact.phone}"               + Environment.NewLine +
+            $"Address: {contact.address}"           + Environment.NewLine +
+            $"Country ID: {contact.countryID}"      + Environment.NewLine
+        );
     }
 }

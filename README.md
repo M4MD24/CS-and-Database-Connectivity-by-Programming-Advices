@@ -37,3 +37,4 @@
                 2. Add New Contact
                 3. Update Contact by Contact ID
                 4. Delete Contact by Contact ID
+                5. List Contacts

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Data.SqlClient;
 using Contacts_DataAccessLayer.Utilities;
 
@@ -199,5 +200,61 @@ public class ContactDataAccess {
         }
 
         return rowAffected;
+    }
+
+    public static List<Contact> getAllContacts() {
+        SqlConnection sqlConnection = new SqlConnection(
+            Constants.DATABASE_CONNECTIVITY
+        );
+        const string GET_ALL_CONTACTS = """
+                                        SELECT *
+                                        FROM Contacts
+                                        """;
+        const string QUERY = GET_ALL_CONTACTS;
+        SqlCommand sqlCommand = new SqlCommand(
+            QUERY,
+            sqlConnection
+        );
+
+        List<Contact> contacts = [];
+
+        try {
+            sqlConnection.Open();
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+
+            while (sqlDataReader.Read()) {
+                int      contactID   = (int) sqlDataReader["ContactID"];
+                string   firstName   = (string) sqlDataReader["FirstName"];
+                string   lastName    = (string) sqlDataReader["LastName"];
+                DateTime dateOfBirth = (DateTime) sqlDataReader["DateOfBirth"];
+                string   email       = (string) sqlDataReader["Email"];
+                string   phone       = (string) sqlDataReader["Phone"];
+                string   address     = (string) sqlDataReader["Address"];
+                int      countryID   = (int) sqlDataReader["CountryID"];
+
+                contacts.Add(
+                    new Contact(
+                        contactID,
+                        firstName,
+                        lastName,
+                        dateOfBirth,
+                        email,
+                        phone,
+                        address,
+                        countryID
+                    )
+                );
+            }
+
+            sqlDataReader.Close();
+        } catch (Exception exception) {
+            Console.WriteLine(
+                exception.Message
+            );
+        } finally {
+            sqlConnection.Close();
+        }
+
+        return contacts;
     }
 }

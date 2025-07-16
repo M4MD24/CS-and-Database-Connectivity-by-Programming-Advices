@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Contacts_DataAccessLayer;
 
 namespace Contacts_BusinessLayer;
@@ -57,5 +58,9 @@ public class ContactBusiness {
             ) +
             "\u001B[0m"
         );
+    }
+
+    public static List<Contact> getAllContacts() {
+        return ContactDataAccess.getAllContacts();
     }
 }
