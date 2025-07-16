@@ -76,7 +76,7 @@ public class App {
                     9
                 ),
                 "m4md24@gmail.com",
-                "+201555400034",
+                "1555400034",
                 "Thing",
                 1
             )
@@ -96,7 +96,7 @@ public class App {
                     9
                 ),
                 "m4md24@gmail.com",
-                "+201555400034",
+                "1555400034",
                 "Thing",
                 1
             )

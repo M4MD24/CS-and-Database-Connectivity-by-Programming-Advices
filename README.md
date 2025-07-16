@@ -42,3 +42,6 @@
                 7. Prepare DataAccess and Business for Countries
                     1. Find Country لاy Country Name
                     2. Is Country Exist by Country Name
+                8. [Add fields to the country](ConsoleApplications/ManagementSystem/Contacts/Database/AddFieldsToTheCountry.sql)
+                    1. Code nvarchar(3) allow null
+                    2. PhoneCode nvarchar(3) allow null

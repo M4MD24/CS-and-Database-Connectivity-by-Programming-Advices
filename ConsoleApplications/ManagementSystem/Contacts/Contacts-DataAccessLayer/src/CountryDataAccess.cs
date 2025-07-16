@@ -33,9 +33,17 @@ public class CountryDataAccess {
             while (sqlDataReader.Read()) {
                 int    countryID   = (int) sqlDataReader["CountryID"];
                 string countryName = (string) sqlDataReader["CountryName"];
+                string? code = sqlDataReader["Code"] != DBNull.Value
+                                       ? (string) sqlDataReader["Code"]
+                                       : null;
+                string? phoneCode = sqlDataReader["PhoneCode"] != DBNull.Value
+                                            ? (string) sqlDataReader["PhoneCode"]
+                                            : null;
                 return new Country(
                     countryID,
-                    countryName
+                    countryName,
+                    code,
+                    phoneCode
                 );
             }
 
