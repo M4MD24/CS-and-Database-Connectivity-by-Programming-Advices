@@ -7,6 +7,28 @@ public class App {
     public static void Main(
         string[] args
     ) {
+        forContacts();
+        forCountries();
+    }
+
+    private static void forCountries() {}
+
+    private static void printContact(
+        Contact contact
+    ) {
+        Console.WriteLine(
+            $"Contact ID: {contact.contactID}"      + Environment.NewLine +
+            $"First Name: {contact.firstName}"      + Environment.NewLine +
+            $"Last Name: {contact.lastName}"        + Environment.NewLine +
+            $"Date of Birth: {contact.dateOfBirth}" + Environment.NewLine +
+            $"Email: {contact.email}"               + Environment.NewLine +
+            $"Phone: {contact.phone}"               + Environment.NewLine +
+            $"Address: {contact.address}"           + Environment.NewLine +
+            $"Country ID: {contact.countryID}"      + Environment.NewLine
+        );
+    }
+
+    private static void forContacts() {
         // Find Contact by Contact ID
         /*
         Contact? contact = Contacts_BusinessLayer.ContactBusiness.findContactByContactID(
@@ -61,9 +83,11 @@ public class App {
         */
 
         // Delete Contact by Contact ID
+        /*
         Contacts_BusinessLayer.ContactBusiness.deleteContactByContactID(
             5
         );
+        */
 
         // Delete Contact by Contact ID
         /*
@@ -79,20 +103,5 @@ public class App {
             4
         );
         */
-    }
-
-    private static void printContact(
-        Contact contact
-    ) {
-        Console.WriteLine(
-            $"Contact ID: {contact.contactID}"      + Environment.NewLine +
-            $"First Name: {contact.firstName}"      + Environment.NewLine +
-            $"Last Name: {contact.lastName}"        + Environment.NewLine +
-            $"Date of Birth: {contact.dateOfBirth}" + Environment.NewLine +
-            $"Email: {contact.email}"               + Environment.NewLine +
-            $"Phone: {contact.phone}"               + Environment.NewLine +
-            $"Address: {contact.address}"           + Environment.NewLine +
-            $"Country ID: {contact.countryID}"      + Environment.NewLine
-        );
     }
 }
