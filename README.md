@@ -29,3 +29,19 @@
             6. [Handle In Statement](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_6_handle_in_statement)
         2. What are CRUD Operations?
         3. What is 3-Tier Architecture? and Why?
+2. Projects
+    1. [Console Applications](ConsoleApplications)
+        1. [Management System](ConsoleApplications/ManagementSystem)
+            1. [Contacts](ConsoleApplications/ManagementSystem/Contacts)
+                1. Find Contact by Contact ID
+                2. Add New Contact
+                3. Update Contact by Contact ID
+                4. Delete Contact by Contact ID
+                5. List Contacts
+                6. Is Contact Exist by Contact ID
+                7. Prepare DataAccess and Business for Countries
+                    1. Find Country لاy Country Name
+                    2. Is Country Exist by Country Name
+                8. [Add fields to the country](ConsoleApplications/ManagementSystem/Contacts/Database/AddFieldsToTheCountry.sql)
+                    1. Code nvarchar(3) allow null
+                    2. PhoneCode nvarchar(3) allow null
