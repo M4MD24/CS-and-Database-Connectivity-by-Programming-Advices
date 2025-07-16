@@ -51,5 +51,45 @@ public class CountryDataAccess {
         return null;
     }
 
-    public static void isCountryExistByCountryName() {}
+    public static bool isCountryExistByCountryName(
+        ref string countryName
+    ) {
+        SqlConnection sqlConnection = new SqlConnection(
+            Constants.DATABASE_CONNECTIVITY
+        );
+        const string IS_COUNTRY_EXIST_BY_COUNTRY_NAME = """
+                                                        SELECT Found = 1
+                                                        FROM Countries
+                                                        WHERE CountryName = @countryName
+                                                        """;
+        const string QUERY = IS_COUNTRY_EXIST_BY_COUNTRY_NAME;
+        SqlCommand sqlCommand = new SqlCommand(
+            QUERY,
+            sqlConnection
+        );
+
+        sqlCommand.Parameters.AddWithValue(
+            "@countryName",
+            countryName
+        );
+
+        bool isExist = false;
+
+        try {
+            sqlConnection.Open();
+
+            SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
+            isExist = sqlDataReader.HasRows;
+            sqlDataReader.Close();
+
+            return isExist;
+        } catch (Exception exception) {
+            Console.WriteLine(
+                exception.Message
+            );
+            return isExist;
+        } finally {
+            sqlConnection.Close();
+        }
+    }
 }

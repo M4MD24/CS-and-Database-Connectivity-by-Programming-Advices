@@ -41,3 +41,4 @@
                 6. Is Contact Exist by Contact ID
                 7. Prepare DataAccess and Business for Countries
                     1. Find Country لاy Country Name
+                    2. Is Country Exist by Country Name
