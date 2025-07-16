@@ -6,7 +6,7 @@ namespace Contacts_DataAccessLayer;
 
 public class ContactDataAccess {
     public static Contact? getContactByContactID(
-        int targetContactID
+        ref int targetContactID
     ) {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.DATABASE_CONNECTIVITY
@@ -62,7 +62,7 @@ public class ContactDataAccess {
     }
 
     public static int addNewContact(
-        Contact contact
+        ref Contact contact
     ) {
         const string ADD_NEW_CONTACT = """
                                        INSERT INTO Contacts (FirstName, LastName, DateOfBirth, Email, Phone, Address, CountryID)
@@ -76,33 +76,33 @@ public class ContactDataAccess {
     }
 
     public static int updateContactByContactID(
-        int     contactID,
-        Contact updatedContact
+        ref int     contactID,
+        ref Contact updatedContact
     ) {
         Contact? contact = getContactByContactID(
-            contactID
+            ref contactID
         );
         if (
             contact == null
         )
             return 0;
 
-        const string UPDATE_DATA = """
-                                   UPDATE Contacts
-                                   SET FirstName = @firstName,
-                                   LastName = @lastName,
-                                   DateOfBirth = @dateOfBirth,
-                                   Email = @email,
-                                   Phone = @phone,
-                                   Address = @address,
-                                   CountryID = @countryID
-                                   WHERE ContactID = @contactID
-                                   """;
+        const string UPDATE_DATA_BY_CONTACT_ID = """
+                                                 UPDATE Contacts
+                                                 SET FirstName = @firstName,
+                                                 LastName = @lastName,
+                                                 DateOfBirth = @dateOfBirth,
+                                                 Email = @email,
+                                                 Phone = @phone,
+                                                 Address = @address,
+                                                 CountryID = @countryID
+                                                 WHERE ContactID = @contactID
+                                                 """;
 
         updatedContact.contactID = contactID;
         return saveContact(
             ref updatedContact,
-            UPDATE_DATA
+            UPDATE_DATA_BY_CONTACT_ID
         );
     }
 
@@ -149,6 +149,41 @@ public class ContactDataAccess {
         sqlCommand.Parameters.AddWithValue(
             "@countryID",
             contact.countryID
+        );
+
+        int rowAffected = 0;
+        try {
+            sqlConnection.Open();
+            rowAffected = sqlCommand.ExecuteNonQuery();
+        } catch (Exception exception) {
+            Console.WriteLine(
+                exception.Message
+            );
+        } finally {
+            sqlConnection.Close();
+        }
+
+        return rowAffected;
+    }
+
+    public static int deleteContactByContactID(
+        ref int contactID
+    ) {
+        SqlConnection sqlConnection = new SqlConnection(
+            Constants.DATABASE_CONNECTIVITY
+        );
+        const string DELETE_DATA_BY_CONTACT_ID = """
+                                                 DELETE Contacts
+                                                 WHERE ContactID = @contactID
+                                                 """;
+        const string QUERY = DELETE_DATA_BY_CONTACT_ID;
+        SqlCommand sqlCommand = new SqlCommand(
+            QUERY,
+            sqlConnection
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@contactID",
+            contactID
         );
 
         int rowAffected = 0;

@@ -59,5 +59,12 @@ public class App {
             )
         );
         */
+
+        // Delete Contact by Contact ID
+        /*
+        Contacts_BusinessLayer.ContactBusiness.deleteContactByContactID(
+            5
+        );
+        */
     }
 }

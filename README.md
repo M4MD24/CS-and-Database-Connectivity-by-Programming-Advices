@@ -36,3 +36,4 @@
                 1. Find Contact by Contact ID
                 2. Add New Contact
                 3. Update Contact by Contact ID
+                4. Delete Contact by Contact ID

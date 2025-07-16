@@ -8,7 +8,7 @@ public class ContactBusiness {
         int contactID
     ) {
         return ContactDataAccess.getContactByContactID(
-            contactID
+            ref contactID
         );
     }
 
@@ -18,7 +18,7 @@ public class ContactBusiness {
         Console.Write(
             (
                 ContactDataAccess.addNewContact(
-                    contact
+                    ref contact
                 ) > 0
                         ? "\u001B[32mAdded successfully"
                         : "\u001B[31mAdded failed"
@@ -34,11 +34,26 @@ public class ContactBusiness {
         Console.Write(
             (
                 ContactDataAccess.updateContactByContactID(
-                    contactID,
-                    contact
+                    ref contactID,
+                    ref contact
                 ) > 0
                         ? "\u001B[32mUpdated successfully"
                         : "\u001B[31mUpdated failed"
+            ) +
+            "\u001B[0m"
+        );
+    }
+
+    public static void deleteContactByContactID(
+        int contactID
+    ) {
+        Console.Write(
+            (
+                ContactDataAccess.deleteContactByContactID(
+                    ref contactID
+                ) > 0
+                        ? "\u001B[32mDeleted successfully"
+                        : "\u001B[31mDeleted failed"
             ) +
             "\u001B[0m"
         );
