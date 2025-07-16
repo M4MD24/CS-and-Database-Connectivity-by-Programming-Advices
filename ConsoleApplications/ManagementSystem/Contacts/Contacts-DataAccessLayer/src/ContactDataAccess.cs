@@ -23,14 +23,14 @@ public class ContactDataAccess {
             sqlConnection.Open();
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
             while (sqlDataReader.Read()) {
-                int      contactID = (int) sqlDataReader["ContactID"];
-                string   firstName = (string) sqlDataReader["FirstName"];
-                string   lastName  = (string) sqlDataReader["LastName"];
+                int      contactID   = (int) sqlDataReader["ContactID"];
+                string   firstName   = (string) sqlDataReader["FirstName"];
+                string   lastName    = (string) sqlDataReader["LastName"];
                 DateTime dateOfBirth = (DateTime) sqlDataReader["DateOfBirth"];
-                string   email     = (string) sqlDataReader["Email"];
-                string   phone     = (string) sqlDataReader["Phone"];
-                string   address   = (string) sqlDataReader["Address"];
-                int      countryID = (int) sqlDataReader["CountryID"];
+                string   email       = (string) sqlDataReader["Email"];
+                string   phone       = (string) sqlDataReader["Phone"];
+                string   address     = (string) sqlDataReader["Address"];
+                int      countryID   = (int) sqlDataReader["CountryID"];
                 return new Contact(
                     contactID,
                     firstName,
@@ -80,13 +80,13 @@ public class ContactDataAccess {
             sqlConnection.Open();
             SqlDataReader sqlDataReader = sqlCommand.ExecuteReader();
             while (sqlDataReader.Read()) {
-                string   firstName = (string) sqlDataReader["FirstName"];
-                string   lastName  = (string) sqlDataReader["LastName"];
+                string   firstName   = (string) sqlDataReader["FirstName"];
+                string   lastName    = (string) sqlDataReader["LastName"];
                 DateTime dateOfBirth = (DateTime) sqlDataReader["DateOfBirth"];
-                string   email     = (string) sqlDataReader["Email"];
-                string   phone     = (string) sqlDataReader["Phone"];
-                string   address   = (string) sqlDataReader["Address"];
-                int      countryID = (int) sqlDataReader["CountryID"];
+                string   email       = (string) sqlDataReader["Email"];
+                string   phone       = (string) sqlDataReader["Phone"];
+                string   address     = (string) sqlDataReader["Address"];
+                int      countryID   = (int) sqlDataReader["CountryID"];
                 return new Contact(
                     targetContactID,
                     firstName,
@@ -109,5 +109,64 @@ public class ContactDataAccess {
         }
 
         return null;
+    }
+
+    public static int addNewContact(
+        Contact contact
+    ) {
+        SqlConnection sqlConnection = new SqlConnection(
+            Constants.DATABASE_CONNECTIVITY
+        );
+        const string ADD_CONTACT = """
+                                   INSERT INTO Contacts (FirstName, LastName, DateOfBirth, Email, Phone, Address, CountryID)
+                                   VALUES (@firstName, @lastName, @dateOfBirth, @email, @phone, @address, @countryID)
+                                   """;
+        const string QUERY = ADD_CONTACT;
+        SqlCommand sqlCommand = new SqlCommand(
+            QUERY,
+            sqlConnection
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@firstName",
+            contact.firstName
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@lastName",
+            contact.lastName
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@dateOfBirth",
+            contact.dateOfBirth
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@email",
+            contact.email
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@phone",
+            contact.phone
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@address",
+            contact.address
+        );
+        sqlCommand.Parameters.AddWithValue(
+            "@countryID",
+            contact.countryID
+        );
+
+        int rowAffected = 0;
+        try {
+            sqlConnection.Open();
+            rowAffected = sqlCommand.ExecuteNonQuery();
+        } catch (Exception exception) {
+            Console.WriteLine(
+                exception.Message
+            );
+        } finally {
+            sqlConnection.Close();
+        }
+
+        return rowAffected;
     }
 }

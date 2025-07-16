@@ -34,3 +34,4 @@
         1. [Management System](ConsoleApplications/ManagementSystem)
             1. [Contacts](ConsoleApplications/ManagementSystem/Contacts)
                 1. Find Contact by Contact ID
+                2. Add New Contact
