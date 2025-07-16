@@ -1,5 +1,5 @@
 ﻿using System;
-using Contacts_DataAccessLayer;
+using Contacts_DataAccessLayer.Models;
 
 namespace Contacts_ConsoleApplication_PresentationLayer;
 
@@ -11,7 +11,21 @@ public class App {
         forCountries();
     }
 
-    private static void forCountries() {}
+    private static void forCountries() {
+        // Find Country by Country Name
+        /*
+        Country? country = Contacts_BusinessLayer.CountryBusiness.findCountryByCountryName(
+            "Australia"
+        );
+        Console.WriteLine(
+            "Country Name: " + (
+                                   country != null
+                                           ? country.countryName
+                                           : "?"
+                               )
+        );
+        */
+    }
 
     private static void printContact(
         Contact contact

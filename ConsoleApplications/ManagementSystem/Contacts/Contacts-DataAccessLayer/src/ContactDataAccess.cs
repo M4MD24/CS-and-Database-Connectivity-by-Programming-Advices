@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
+using Contacts_DataAccessLayer.Models;
 using Contacts_DataAccessLayer.Utilities;
 
 namespace Contacts_DataAccessLayer;

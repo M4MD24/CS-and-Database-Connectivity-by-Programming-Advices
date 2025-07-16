@@ -1,6 +1,6 @@
 using System;
 
-namespace Contacts_DataAccessLayer;
+namespace Contacts_DataAccessLayer.Models;
 
 public class Contact {
     public int?      contactID   { get; set; }
