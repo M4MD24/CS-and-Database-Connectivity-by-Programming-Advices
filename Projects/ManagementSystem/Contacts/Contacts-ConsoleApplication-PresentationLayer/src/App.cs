@@ -27,11 +27,9 @@ public class App {
         */
 
         // Is Country Exist by Country Name
-        /*
         Contacts_BusinessLayer.CountryBusiness.isCountryExistByCountryName(
             "Australia"
         );
-        */
     }
 
     private static void printContact(
