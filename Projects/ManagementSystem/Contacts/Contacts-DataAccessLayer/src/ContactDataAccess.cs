@@ -7,6 +7,12 @@ using Contacts_DataAccessLayer.Utilities;
 namespace Contacts_DataAccessLayer;
 
 public class ContactDataAccess {
+    private enum Mode {
+        Add    = 0,
+        Update = 1
+    }
+
+
     public static Contact? getContactByContactID(
         ref int targetContactID
     ) {
@@ -73,7 +79,8 @@ public class ContactDataAccess {
 
         return saveContact(
             ref contact,
-            ADD_NEW_CONTACT
+            ADD_NEW_CONTACT,
+            Mode.Add
         );
     }
 
@@ -104,13 +111,15 @@ public class ContactDataAccess {
         updatedContact.contactID = contactID;
         return saveContact(
             ref updatedContact,
-            UPDATE_DATA_BY_CONTACT_ID
+            UPDATE_DATA_BY_CONTACT_ID,
+            Mode.Update
         );
     }
 
     private static int saveContact(
         ref Contact contact,
-        string      query
+        string      query,
+        Mode        mode
     ) {
         SqlConnection sqlConnection = new SqlConnection(
             Constants.DATABASE_CONNECTIVITY
@@ -120,10 +129,13 @@ public class ContactDataAccess {
             query,
             sqlConnection
         );
-        sqlCommand.Parameters.AddWithValue(
-            "@contactID",
-            contact.contactID
-        );
+
+        if (mode == Mode.Update)
+            sqlCommand.Parameters.AddWithValue(
+                "@contactID",
+                contact.contactID
+            );
+
         sqlCommand.Parameters.AddWithValue(
             "@firstName",
             contact.firstName
