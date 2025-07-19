@@ -24,7 +24,7 @@ public class InsertAndAddDataAndRetrieveAutoNumberAfterInsertingAndAddingData {
         Contact contact
     ) {
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string ADD_CONTACT_AND_GET_SCOPE_IDENTITY = """
                                                           INSERT INTO Contacts (FirstName, LastName, Email, Phone, Address, CountryID)

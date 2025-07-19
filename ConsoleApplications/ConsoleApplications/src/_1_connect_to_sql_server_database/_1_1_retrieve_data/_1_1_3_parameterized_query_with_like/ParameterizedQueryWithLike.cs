@@ -70,7 +70,7 @@ public class ParameterizedQueryWithLike {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACTS_STARTS_WITH_IN_FIRST_NAME = """
                                                                  SELECT *
@@ -116,7 +116,7 @@ public class ParameterizedQueryWithLike {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACTS_ENDS_WITH_IN_FIRST_NAME = """
                                                                SELECT *
@@ -148,7 +148,7 @@ public class ParameterizedQueryWithLike {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACTS_CONTAINS_WITH_IN_FIRST_NAME = """
                                                                    SELECT *

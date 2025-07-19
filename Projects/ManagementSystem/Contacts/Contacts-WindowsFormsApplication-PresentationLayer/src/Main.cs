@@ -20,14 +20,14 @@ public partial class Main : Form {
         contactList.ContextMenuStrip = contactMenu;
 
         ToolStripMenuItem information = new(
-                              "Information"
-                          ),
-                          edit = new(
-                              "Edit"
-                          ),
-                          delete = new(
-                              "Delete"
-                          );
+            "Information"
+        );
+        ToolStripMenuItem edit = new(
+            "Edit"
+        );
+        ToolStripMenuItem delete = new(
+            "Delete"
+        );
 
         information.Click += information_Click!;
         edit.Click        += edit_Click!;
@@ -42,6 +42,61 @@ public partial class Main : Form {
         contactMenu.Items.Add(
             delete
         );
+    }
+
+    private void information_Click(
+        object    sender,
+        EventArgs e
+    ) {
+        int contactID = getContactID_FromContactsList();
+        if (contactID == -1)
+            return;
+
+        ContactInformation contactInformation = new(
+            Mode.Information,
+            contactID
+        );
+        contactInformation.FormClosed += contactForm_FormClosed!;
+        contactInformation.Show();
+    }
+
+    private void edit_Click(
+        object    sender,
+        EventArgs e
+    ) {
+        int contactID = getContactID_FromContactsList();
+        if (contactID == -1) return;
+
+        ContactInformation contactInformation = new(
+            Mode.Update,
+            contactID
+        );
+        contactInformation.FormClosed += contactForm_FormClosed!;
+        contactInformation.Show();
+    }
+
+    private void delete_Click(
+        object    sender,
+        EventArgs e
+    ) {
+        int contactID = getContactID_FromContactsList();
+        if (contactID == -1) return;
+
+        DialogResult deleteQuestionResult = MessageBox.Show(
+            $@"Do you want to delete the contact whose contact ID is ({contactID})?",
+            @"Delete Question",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question,
+            MessageBoxDefaultButton.Button2
+        );
+
+        if (deleteQuestionResult != DialogResult.Yes)
+            return;
+
+        ContactBusiness.deleteContactByContactID(
+            ref contactID
+        );
+        loadContacts();
     }
 
     private void addNewContact_Click(
@@ -59,57 +114,6 @@ public partial class Main : Form {
         object              sender,
         FormClosedEventArgs e
     ) {
-        loadContacts();
-    }
-
-    private void information_Click(
-        object    sender,
-        EventArgs e
-    ) {
-        ContactInformation contactInformation = new(
-            Mode.Information,
-            getContactID_FromContactsList()
-        );
-        contactInformation.FormClosed += contactForm_FormClosed!;
-        contactInformation.Show();
-    }
-
-    private void edit_Click(
-        object    sender,
-        EventArgs e
-    ) {
-        ContactInformation contactInformation = new(
-            Mode.Update,
-            getContactID_FromContactsList()
-        );
-        contactInformation.FormClosed += contactForm_FormClosed!;
-        contactInformation.Show();
-    }
-
-    private void delete_Click(
-        object    sender,
-        EventArgs e
-    ) {
-        int contactID = getContactID_FromContactsList();
-
-        DialogResult deleteQuestionResult = MessageBox.Show(
-            $@"Do you want to delete the contact whose contact ID is ({contactID})?",
-            @"Delete Question",
-            MessageBoxButtons.YesNo,
-            MessageBoxIcon.Question,
-            MessageBoxDefaultButton.Button2
-        );
-
-        if (deleteQuestionResult != DialogResult.Yes)
-            return;
-
-        if (contactID == -1)
-            return;
-
-        ContactBusiness.deleteContactByContactID(
-            ref contactID
-        );
-
         loadContacts();
     }
 

@@ -19,7 +19,7 @@ public class FindSingleContact {
         int contactID
     ) {
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACT_BY_CONTACT_ID = """
                                            SELECT *

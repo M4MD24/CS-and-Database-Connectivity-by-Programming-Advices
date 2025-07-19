@@ -26,7 +26,7 @@ public class UpdateData {
         Contact contact
     ) {
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string UPDATE_DATA = """
                                    UPDATE Contacts

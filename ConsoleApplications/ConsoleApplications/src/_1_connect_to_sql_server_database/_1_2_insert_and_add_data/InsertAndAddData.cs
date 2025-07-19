@@ -24,7 +24,7 @@ public class InsertAndAddData {
         Contact contact
     ) {
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string ADD_CONTACT = """
                                    INSERT INTO Contacts (FirstName, LastName, Email, Phone, Address, CountryID)

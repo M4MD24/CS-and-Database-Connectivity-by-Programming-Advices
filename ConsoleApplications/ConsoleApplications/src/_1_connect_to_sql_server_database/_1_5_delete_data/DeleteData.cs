@@ -17,7 +17,7 @@ public class DeleteData {
         int contactID
     ) {
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string DELETE_DATA = """
                                    DELETE Contacts

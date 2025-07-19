@@ -13,7 +13,7 @@ public class ParameterizedQuery {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_ALL_CONTACTS_EQUALS_TARGET_FIRST_NAME = """
                                            SELECT *
