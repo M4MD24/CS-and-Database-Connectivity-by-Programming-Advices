@@ -1,30 +1,36 @@
 using System;
+using System.Collections.Generic;
 using Contacts_DataAccessLayer;
 using Contacts_DataAccessLayer.Models;
 
 namespace Contacts_BusinessLayer;
 
 public class CountryBusiness {
+    public static Country? findCountryByCountryId(
+        ref int countryID
+    ) {
+        return CountryDataAccess.getCountryByCountryID(
+            ref countryID
+        );
+    }
+
     public static Country? findCountryByCountryName(
-        string countryName
+        ref string countryName
     ) {
         return CountryDataAccess.getCountryByCountryName(
             ref countryName
         );
     }
 
-    public static void isCountryExistByCountryName(
-        string countryName
+    public static bool isCountryExistByCountryName(
+        ref string countryName
     ) {
-        Console.WriteLine(
-            (
-                CountryDataAccess.isCountryExistByCountryName(
-                    ref countryName
-                )
-                        ? "\u001B[32mCountry is Found"
-                        : "\u001B[31mCountry isn't Found"
-            ) +
-            "\u001B[0m"
+        return CountryDataAccess.isCountryExistByCountryName(
+            ref countryName
         );
+    }
+
+    public static List<Country> getAllCountries() {
+        return CountryDataAccess.getAllCountries();
     }
 }

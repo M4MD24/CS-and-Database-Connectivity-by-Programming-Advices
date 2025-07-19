@@ -13,4 +13,13 @@
       <ProjectReference Include="..\Contacts-BusinessLayer\Contacts-BusinessLayer.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="src\Main.cs">
+        <SubType>Form</SubType>
+      </Compile>
+      <Compile Update="src\ContactInformation.cs">
+        <SubType>Form</SubType>
+      </Compile>
+    </ItemGroup>
+
 </Project>

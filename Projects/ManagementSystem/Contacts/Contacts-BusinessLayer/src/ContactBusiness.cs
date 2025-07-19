@@ -7,85 +7,52 @@ namespace Contacts_BusinessLayer;
 
 public class ContactBusiness {
     public static Contact? findContactByContactID(
-        int contactID
+        ref int contactID
     ) {
         return ContactDataAccess.getContactByContactID(
             ref contactID
         );
     }
 
-    public static void addNewContact(
-        Contact contact
+    public static int addNewContact(
+        ref Contact contact
     ) {
-        Console.WriteLine(
-            (
-                ContactDataAccess.addNewContact(
-                    ref contact
-                ) > 0
-                        ? "\u001B[32mAdded successfully"
-                        : "\u001B[31mAdded failed"
-            ) +
-            "\u001B[0m"
+        return ContactDataAccess.addNewContact(
+            ref contact
         );
     }
 
-    public static void updateContactByContactID(
-        int     contactID,
-        Contact contact
+    public static int updateContactByContactID(
+        ref int     contactID,
+        ref Contact contact
     ) {
-        Console.WriteLine(
-            (
-                ContactDataAccess.updateContactByContactID(
-                    ref contactID,
-                    ref contact
-                ) > 0
-                        ? "\u001B[32mUpdated successfully"
-                        : "\u001B[31mUpdated failed"
-            ) +
-            "\u001B[0m"
+        return ContactDataAccess.updateContactByContactID(
+            ref contactID,
+            ref contact
         );
     }
 
-    public static void deleteContactByContactID(
-        int contactID
+    public static int deleteContactByContactID(
+        ref int contactID
     ) {
-        if (
-            ContactDataAccess.isContactExistByContactID(
-                ref contactID
-            )
-        ) {
-            Console.WriteLine(
-                (
-                    ContactDataAccess.deleteContactByContactID(
-                        ref contactID
-                    ) > 0
-                            ? "\u001B[32mDeleted successfully"
-                            : "\u001B[31mDeleted failed"
-                ) +
-                "\u001B[0m"
-            );
-        } else
-            Console.WriteLine(
-                "\u001B[31mContact isn't Found"
-            );
+        return ContactDataAccess.isContactExistByContactID(
+                   ref contactID
+               )
+                       ? ContactDataAccess.deleteContactByContactID(
+                           ref contactID
+                       )
+                       : -1;
     }
 
     public static List<Contact> getAllContacts() {
         return ContactDataAccess.getAllContacts();
     }
 
-    public static void isContactExistByContactID(
-        int contactID
+    public static bool isContactExistByContactID(
+        ref int contactID
     ) {
-        Console.WriteLine(
-            (
-                ContactDataAccess.isContactExistByContactID(
-                    ref contactID
-                )
-                        ? "\u001B[32mContact is Found"
-                        : "\u001B[31mContact isn't Found"
-            ) +
-            "\u001B[0m"
+        return ContactDataAccess.isContactExistByContactID(
+            ref contactID
         );
     }
 }
