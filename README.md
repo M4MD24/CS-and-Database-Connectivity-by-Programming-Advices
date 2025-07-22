@@ -35,6 +35,7 @@
             3. [Count, Sum, Avg, Min, Max](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_3_count_and_sum_and_avg_and_min_and_max)
             4. [Filter Data](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_4_filter_data)
             5. [Sorting](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_5_sorting)
+            6. [Delete](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_6_delete)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)

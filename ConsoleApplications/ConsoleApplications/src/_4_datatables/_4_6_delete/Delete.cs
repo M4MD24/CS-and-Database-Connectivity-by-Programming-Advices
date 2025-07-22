@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_5_sorting;
+namespace ConsoleApplications._4_datatables._4_6_delete;
 
-public class Sorting {
-    public static void main() {
+public class Delete {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -72,23 +72,22 @@ public class Sorting {
         );
 
         printEmployees(
-            "Before Sort",
+            "Before Delete",
             ref employees
         );
 
-        employees.DefaultView.Sort = "Name";
-        employees                  = employees.DefaultView.ToTable();
-
-        printEmployees(
-            "After Sort by Name Ascending",
-            ref employees
+        const string FILTER = "ID = 3";
+        DataRow[] filteredEmployees = employees.Select(
+            FILTER
         );
 
-        employees.DefaultView.Sort = "ID DESC";
-        employees                  = employees.DefaultView.ToTable();
+        foreach (DataRow filteredEmployee in filteredEmployees)
+            filteredEmployee.Delete();
+
+        // employees.AcceptChanges(); // To apply changes to the database online, if you are offline you will not need it
 
         printEmployees(
-            "After Sort by ID Descending",
+            "After Delete",
             ref employees
         );
     }
