@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_3_count_and_sum_and_avg_and_min_and_max;
+namespace ConsoleApplications._4_datatables._4_4_filter_data;
 
-public class CountAndSumAndAvgAndMinAndMax {
-    public static void main() {
+public class FilterData {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -51,13 +51,20 @@ public class CountAndSumAndAvgAndMinAndMax {
         );
         employees.Rows.Add(
             4,
+            "Mohamed",
+            "Syria",
+            5120,
+            DateTime.Now
+        );
+        employees.Rows.Add(
+            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            5,
+            6,
             "Mustafa",
             "Iraq",
             4950,
@@ -73,32 +80,42 @@ public class CountAndSumAndAvgAndMinAndMax {
             new string(
                 '-',
                 30
-            )
+            ) + Environment.NewLine
         );
 
-        int count = employees.Rows.Count;
+        const string FILTER = "Country = 'Syria'";
+        DataRow[] filteredEmployees = employees.Select(
+            FILTER
+        );
+
+        foreach (DataRow filteredEmployee in filteredEmployees)
+            printEmployee(
+                filteredEmployee
+            );
+
+        int count = filteredEmployees.Length;
         double totalSalaries = Convert.ToDouble(
             employees.Compute(
                 "SUM(Salary)",
-                string.Empty
+                FILTER
             )
         );
         double averageSalaries = Convert.ToDouble(
             employees.Compute(
                 "AVG(Salary)",
-                string.Empty
+                FILTER
             )
         );
         double minimumSalaries = Convert.ToDouble(
             employees.Compute(
                 "MIN(Salary)",
-                string.Empty
+                FILTER
             )
         );
         double maximumSalaries = Convert.ToDouble(
             employees.Compute(
                 "MAX(Salary)",
-                string.Empty
+                FILTER
             )
         );
 
