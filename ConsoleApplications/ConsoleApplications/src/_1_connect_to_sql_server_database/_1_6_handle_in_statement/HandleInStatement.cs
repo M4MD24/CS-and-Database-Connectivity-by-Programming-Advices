@@ -6,9 +6,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_6_handle_in_statement;
 
 public class HandleInStatement {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         deleteContactsByContactIDs(
             5,
             3

@@ -77,9 +77,7 @@ public class ParameterizedQuery {
         );
     }
 
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         printContactsWithFirstName(
             "Emily"
         );

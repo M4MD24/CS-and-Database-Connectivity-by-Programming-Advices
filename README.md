@@ -31,6 +31,7 @@
         3. What is 3-Tier Architecture? and Why?
         4. Datatables
             1. What is Datatable?
+            2. [Create Offline Data Table and List Data](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_2_create_offline_data_table_and_list_data)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)

@@ -5,9 +5,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_5_find_single_contact;
 
 public class FindSingleContact {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         printContact(
             getContactByContactID(
                 4

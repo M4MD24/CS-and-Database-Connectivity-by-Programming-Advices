@@ -5,9 +5,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_2_insert_and_add_data;
 
 public class InsertAndAddData {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         addContact(
             new Contact(
                 "Someone",

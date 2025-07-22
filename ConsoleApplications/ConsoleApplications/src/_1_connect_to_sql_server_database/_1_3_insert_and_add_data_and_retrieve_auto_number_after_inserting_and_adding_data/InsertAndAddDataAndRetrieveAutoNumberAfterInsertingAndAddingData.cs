@@ -5,9 +5,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_3_insert_and_add_data_and_retrieve_auto_number_after_inserting_and_adding_data;
 
 public class InsertAndAddDataAndRetrieveAutoNumberAfterInsertingAndAddingData {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         addContact(
             new Contact(
                 "Someone",
