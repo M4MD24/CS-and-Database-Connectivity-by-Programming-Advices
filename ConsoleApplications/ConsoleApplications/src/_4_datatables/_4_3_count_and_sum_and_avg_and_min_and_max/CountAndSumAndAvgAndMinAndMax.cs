@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_2_create_offline_data_table_and_list_data;
+namespace ConsoleApplications._4_datatables._4_3_count_and_sum_and_avg_and_min_and_max;
 
-public class CreateOfflineDataTableAndListData {
-    public static void main() {
+public class CountAndSumAndAvgAndMinAndMax {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -68,6 +68,52 @@ public class CreateOfflineDataTableAndListData {
             printEmployee(
                 employee
             );
+
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            )
+        );
+
+        int count = employees.Rows.Count;
+        double totalSalaries = Convert.ToDouble(
+            employees.Compute(
+                "SUM(Salary)",
+                string.Empty
+            )
+        );
+        double averageSalaries = Convert.ToDouble(
+            employees.Compute(
+                "AVG(Salary)",
+                string.Empty
+            )
+        );
+        double minimumSalaries = Convert.ToDouble(
+            employees.Compute(
+                "MIN(Salary)",
+                string.Empty
+            )
+        );
+        double maximumSalaries = Convert.ToDouble(
+            employees.Compute(
+                "MAX(Salary)",
+                string.Empty
+            )
+        );
+
+        Console.Write(
+            "Count: {0}"            + Environment.NewLine +
+            "Total Salaries: {1}"   + Environment.NewLine +
+            "Average Salaries: {2}" + Environment.NewLine +
+            "Minimum Salaries: {3}" + Environment.NewLine +
+            "Maximum Salaries: {4}" + Environment.NewLine,
+            count,
+            totalSalaries,
+            averageSalaries,
+            minimumSalaries,
+            maximumSalaries
+        );
     }
 
     private static void printEmployee(
