@@ -34,6 +34,7 @@
             2. [Create Offline Data Table and List Data](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_2_create_offline_data_table_and_list_data)
             3. [Count, Sum, Avg, Min, Max](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_3_count_and_sum_and_avg_and_min_and_max)
             4. [Filter Data](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_4_filter_data)
+            5. [Sorting](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_5_sorting)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)
