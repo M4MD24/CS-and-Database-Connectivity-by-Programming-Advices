@@ -4,7 +4,7 @@ using System.Data;
 namespace ConsoleApplications._6_data_set._6_3_access_database_inside_data_set_by_name;
 
 public class AccessDatabaseInsideDataSetByName {
-    public static void Main() {
+    public static void main() {
         DataTable employees = new(
                       "Employees"
                   ),

@@ -1,7 +1,7 @@
 using System;
 using System.Data.SqlClient;
 using System.Linq;
-using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
+using ConsoleApplications.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_6_handle_in_statement;
 
