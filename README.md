@@ -30,7 +30,7 @@
         2. What are CRUD Operations?
         3. What is 3-Tier Architecture? and Why?
         4. [DataTable](ConsoleApplications/ConsoleApplications/src/_4_data_table)
-            1. What is Datatable?
+            1. What is DataTable?
             2. [Create Offline Data Table and List Data](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_2_create_offline_data_table_and_list_data)
             3. [Count, Sum, Avg, Min, Max](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_3_count_and_sum_and_avg_and_min_and_max)
             4. [Filter Data](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_4_filter_data)
@@ -45,6 +45,10 @@
             2. [Create](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_2_create)
             3. [Filtering](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_3_filtering)
             4. [Sorting](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_4_sorting)
+        6. DataSet
+            1. What is DataSet?
+            2. [Create](ConsoleApplications/ConsoleApplications/src/_6_data_set/_6_2_create)
+            3. [Access Database Inside DataSet by Name](ConsoleApplications/ConsoleApplications/src/_6_data_set/_6_3_access_database_inside_data_set_by_name)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)

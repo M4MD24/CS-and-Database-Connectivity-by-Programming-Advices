@@ -4,7 +4,7 @@ using System.Data;
 namespace ConsoleApplications._5_data_view._5_4_sorting;
 
 public class Sorting {
-    public static void Main() {
+    public static void main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
