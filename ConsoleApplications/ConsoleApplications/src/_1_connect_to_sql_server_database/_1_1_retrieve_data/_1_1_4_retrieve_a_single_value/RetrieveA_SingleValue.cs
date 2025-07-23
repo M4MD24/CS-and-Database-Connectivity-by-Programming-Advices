@@ -1,6 +1,6 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications.Utilities;
+using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_4_retrieve_a_single_value;
 
