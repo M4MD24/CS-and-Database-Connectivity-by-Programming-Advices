@@ -4,7 +4,7 @@ using System.Data;
 namespace ConsoleApplications._4_data_table._4_10_auto_increment_and_others;
 
 public class AutoIncrementAndOthers {
-    public static void Main() {
+    public static void main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(

@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._5_data_view._5_2_create;
+namespace ConsoleApplications._5_data_view._5_3_filtering;
 
-public class Create {
-    public static void main() {
+public class Filtering {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -51,13 +51,20 @@ public class Create {
         );
         employees.Rows.Add(
             4,
+            "Mohamed",
+            "Syria",
+            5120,
+            DateTime.Now
+        );
+        employees.Rows.Add(
+            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            5,
+            6,
             "Mustafa",
             "Iraq",
             4950,
@@ -66,15 +73,55 @@ public class Create {
 
         DataView employeesAsView = employees.DefaultView;
 
-        for (
-            int index = 0;
-            index < employeesAsView.Count;
-            index++
-        )
-            printEmployee(
-                employeesAsView,
-                index
+        printEmployees(
+            "Before Filtering",
+            employeesAsView
+        );
+
+        employeesAsView.RowFilter = "Country = 'Syria'";
+
+        printEmployees(
+            "After Filtering",
+            employeesAsView
+        );
+    }
+
+    private static void printEmployees(
+        string   title,
+        DataView employees
+    ) {
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            ) + Environment.NewLine
+        );
+
+        Console.WriteLine(
+            title + Environment.NewLine
+        );
+
+        if (employees.Count > 0)
+            for (
+                int index = 0;
+                index < employees.Count;
+                index++
+            )
+                printEmployee(
+                    employees,
+                    index
+                );
+        else
+            Console.WriteLine(
+                "Nothing to Show!" + Environment.NewLine
             );
+
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            ) + Environment.NewLine
+        );
     }
 
     private static void printEmployee(
