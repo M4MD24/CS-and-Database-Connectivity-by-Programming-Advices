@@ -43,7 +43,8 @@
         5. [DataView](ConsoleApplications/ConsoleApplications/src/_5_data_view)
             1. What is DataView?
             2. [Create](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_2_create)
-            3. [Filtering](ConsoleApplications/ConsoleApplications/src/_5_data_view/_)
+            3. [Filtering](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_3_filtering)
+            4. [Sorting](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_4_sorting)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)

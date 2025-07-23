@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._5_data_view._5_3_filtering;
+namespace ConsoleApplications._5_data_view._5_4_sorting;
 
-public class Filtering {
-    public static void main() {
+public class Sorting {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -29,20 +29,6 @@ public class Filtering {
         );
 
         employees.Rows.Add(
-            1,
-            "Ahmad",
-            "Egypt",
-            5000,
-            DateTime.Now
-        );
-        employees.Rows.Add(
-            2,
-            "Omar",
-            "Saudi Arabia",
-            5200,
-            DateTime.Now
-        );
-        employees.Rows.Add(
             3,
             "Youssef",
             "Syria",
@@ -50,10 +36,17 @@ public class Filtering {
             DateTime.Now
         );
         employees.Rows.Add(
-            4,
-            "Mohamed",
-            "Syria",
-            5120,
+            6,
+            "Mustafa",
+            "Iraq",
+            4950,
+            DateTime.Now
+        );
+        employees.Rows.Add(
+            1,
+            "Ahmad",
+            "Egypt",
+            5000,
             DateTime.Now
         );
         employees.Rows.Add(
@@ -64,24 +57,31 @@ public class Filtering {
             DateTime.Now
         );
         employees.Rows.Add(
-            6,
-            "Mustafa",
-            "Iraq",
-            4950,
+            2,
+            "Omar",
+            "Saudi Arabia",
+            5200,
+            DateTime.Now
+        );
+        employees.Rows.Add(
+            4,
+            "Mohamed",
+            "Syria",
+            5120,
             DateTime.Now
         );
 
         DataView employeesAsView = employees.DefaultView;
 
         printEmployees(
-            "Before Filtering",
+            "Before Sorting",
             employeesAsView
         );
 
-        employeesAsView.RowFilter = "Country = 'Syria'";
+        employeesAsView.Sort = "ID";
 
         printEmployees(
-            "After Filtering",
+            "After Sorting",
             employeesAsView
         );
     }
