@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_4_filter_data;
+namespace ConsoleApplications._4_data_table._4_8_clear;
 
-public class FilterData {
+public class Clear {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -71,11 +71,23 @@ public class FilterData {
             DateTime.Now
         );
 
-        foreach (DataRow employee in employees.Rows)
-            printEmployee(
-                employee
-            );
+        printEmployees(
+            "Before Clear",
+            ref employees
+        );
 
+        employees.Clear();
+
+        printEmployees(
+            "After Clear",
+            ref employees
+        );
+    }
+
+    private static void printEmployees(
+        string        title,
+        ref DataTable employees
+    ) {
         Console.WriteLine(
             new string(
                 '-',
@@ -83,53 +95,25 @@ public class FilterData {
             ) + Environment.NewLine
         );
 
-        const string FILTER = "Country = 'Syria'";
-        DataRow[] filteredEmployees = employees.Select(
-            FILTER
+        Console.WriteLine(
+            title + Environment.NewLine
         );
 
-        foreach (DataRow filteredEmployee in filteredEmployees)
-            printEmployee(
-                filteredEmployee
+        if (employees.Rows.Count > 0)
+            foreach (DataRow employee in employees.Rows)
+                printEmployee(
+                    employee
+                );
+        else
+            Console.WriteLine(
+                "Nothing to Show!" + Environment.NewLine
             );
 
-        int count = filteredEmployees.Length;
-        double totalSalaries = Convert.ToDouble(
-            employees.Compute(
-                "SUM(Salary)",
-                FILTER
-            )
-        );
-        double averageSalaries = Convert.ToDouble(
-            employees.Compute(
-                "AVG(Salary)",
-                FILTER
-            )
-        );
-        double minimumSalaries = Convert.ToDouble(
-            employees.Compute(
-                "MIN(Salary)",
-                FILTER
-            )
-        );
-        double maximumSalaries = Convert.ToDouble(
-            employees.Compute(
-                "MAX(Salary)",
-                FILTER
-            )
-        );
-
-        Console.Write(
-            "Count: {0}"            + Environment.NewLine +
-            "Total Salaries: {1}"   + Environment.NewLine +
-            "Average Salaries: {2}" + Environment.NewLine +
-            "Minimum Salaries: {3}" + Environment.NewLine +
-            "Maximum Salaries: {4}" + Environment.NewLine,
-            count,
-            totalSalaries,
-            averageSalaries,
-            minimumSalaries,
-            maximumSalaries
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            ) + Environment.NewLine
         );
     }
 

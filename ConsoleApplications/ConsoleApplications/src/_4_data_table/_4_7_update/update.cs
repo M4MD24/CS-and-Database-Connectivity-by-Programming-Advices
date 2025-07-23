@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_5_sorting;
+namespace ConsoleApplications._4_data_table._4_7_update;
 
-public class Sorting {
+public class update {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -72,23 +72,22 @@ public class Sorting {
         );
 
         printEmployees(
-            "Before Sort",
+            "Before Update",
             ref employees
         );
 
-        employees.DefaultView.Sort = "Name";
-        employees                  = employees.DefaultView.ToTable();
-
-        printEmployees(
-            "After Sort by Name Ascending",
-            ref employees
+        const string FILTER = "ID = 3";
+        DataRow[] filteredEmployees = employees.Select(
+            FILTER
         );
 
-        employees.DefaultView.Sort = "ID DESC";
-        employees                  = employees.DefaultView.ToTable();
+        foreach (DataRow filteredEmployee in filteredEmployees) {
+            filteredEmployee["Name"]    = "Mahmoud";
+            filteredEmployee["Country"] = "Egypt";
+        }
 
         printEmployees(
-            "After Sort by ID Descending",
+            "After Update",
             ref employees
         );
     }

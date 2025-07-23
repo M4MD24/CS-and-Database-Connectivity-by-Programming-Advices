@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_2_create_offline_data_table_and_list_data;
+namespace ConsoleApplications._4_data_table._4_6_delete;
 
-public class CreateOfflineDataTableAndListData {
+public class Delete {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -51,23 +51,73 @@ public class CreateOfflineDataTableAndListData {
         );
         employees.Rows.Add(
             4,
+            "Mohamed",
+            "Syria",
+            5120,
+            DateTime.Now
+        );
+        employees.Rows.Add(
+            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            5,
+            6,
             "Mustafa",
             "Iraq",
             4950,
             DateTime.Now
         );
 
+        printEmployees(
+            "Before Delete",
+            ref employees
+        );
+
+        const string FILTER = "ID = 3";
+        DataRow[] filteredEmployees = employees.Select(
+            FILTER
+        );
+
+        foreach (DataRow filteredEmployee in filteredEmployees)
+            filteredEmployee.Delete();
+
+        // employees.AcceptChanges(); // To apply changes to the database online, if you are offline you will not need it
+
+        printEmployees(
+            "After Delete",
+            ref employees
+        );
+    }
+
+    private static void printEmployees(
+        string        title,
+        ref DataTable employees
+    ) {
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            ) + Environment.NewLine
+        );
+
+        Console.WriteLine(
+            title + Environment.NewLine
+        );
+
         foreach (DataRow employee in employees.Rows)
             printEmployee(
                 employee
             );
+
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            ) + Environment.NewLine
+        );
     }
 
     private static void printEmployee(
@@ -85,20 +135,5 @@ public class CreateOfflineDataTableAndListData {
             employee["Salary"],
             employee["Date"]
         );
-
-        /* Another Solution
-        Console.WriteLine(
-            "ID: {0}" + Environment.NewLine +
-            "ID: {1}" + Environment.NewLine +
-            "ID: {2}" + Environment.NewLine +
-            "ID: {3}" + Environment.NewLine +
-            "ID: {4}" + Environment.NewLine,
-            employee[0],
-            employee[1],
-            employee[2],
-            employee[3],
-            employee[4]
-        );
-        */
     }
 }

@@ -29,17 +29,22 @@
             6. [Handle In Statement](ConsoleApplications/ConsoleApplications/src/_1_connect_to_sql_server_database/_1_6_handle_in_statement)
         2. What are CRUD Operations?
         3. What is 3-Tier Architecture? and Why?
-        4. Datatables
+        4. [DataTable](ConsoleApplications/ConsoleApplications/src/_4_data_table)
             1. What is Datatable?
-            2. [Create Offline Data Table and List Data](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_2_create_offline_data_table_and_list_data)
-            3. [Count, Sum, Avg, Min, Max](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_3_count_and_sum_and_avg_and_min_and_max)
-            4. [Filter Data](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_4_filter_data)
-            5. [Sorting](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_5_sorting)
-            6. [Delete](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_6_delete)
-            7. [Update](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_7_update)
-            8. [Clear](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_8_clear)
-            9. [Primary Key](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_9_primary_key)
-            10. [Auto Increment and Others](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_10_auto_increment_and_others)
+            2. [Create Offline Data Table and List Data](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_2_create_offline_data_table_and_list_data)
+            3. [Count, Sum, Avg, Min, Max](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_3_count_and_sum_and_avg_and_min_and_max)
+            4. [Filter Data](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_4_filter_data)
+            5. [Sorting](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_5_sorting)
+            6. [Delete](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_6_delete)
+            7. [Update](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_7_update)
+            8. [Clear](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_8_clear)
+            9. [Primary Key](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_9_primary_key)
+            10. [Auto Increment and Others](ConsoleApplications/ConsoleApplications/src/_4_data_table/_4_10_auto_increment_and_others)
+        5. [DataView](ConsoleApplications/ConsoleApplications/src/_5_data_view)
+            1. What is DataView?
+            2. [Create](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_2_create)
+            3. [Filtering](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_3_filtering)
+            4. [Sorting](ConsoleApplications/ConsoleApplications/src/_5_data_view/_5_4_sorting)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)

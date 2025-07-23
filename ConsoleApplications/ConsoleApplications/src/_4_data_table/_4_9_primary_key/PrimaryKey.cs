@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_6_delete;
+namespace ConsoleApplications._4_data_table._4_9_primary_key;
 
-public class Delete {
+public class PrimaryKey {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -71,23 +71,12 @@ public class Delete {
             DateTime.Now
         );
 
-        printEmployees(
-            "Before Delete",
-            ref employees
-        );
-
-        const string FILTER = "ID = 3";
-        DataRow[] filteredEmployees = employees.Select(
-            FILTER
-        );
-
-        foreach (DataRow filteredEmployee in filteredEmployees)
-            filteredEmployee.Delete();
-
-        // employees.AcceptChanges(); // To apply changes to the database online, if you are offline you will not need it
+        DataColumn[] primaryKeyColumns = new DataColumn[1];
+        primaryKeyColumns[0] = employees.Columns["ID"]!;
+        employees.PrimaryKey = primaryKeyColumns;
 
         printEmployees(
-            "After Delete",
+            "Employee List",
             ref employees
         );
     }
@@ -107,9 +96,14 @@ public class Delete {
             title + Environment.NewLine
         );
 
-        foreach (DataRow employee in employees.Rows)
-            printEmployee(
-                employee
+        if (employees.Rows.Count > 0)
+            foreach (DataRow employee in employees.Rows)
+                printEmployee(
+                    employee
+                );
+        else
+            Console.WriteLine(
+                "Nothing to Show!" + Environment.NewLine
             );
 
         Console.WriteLine(

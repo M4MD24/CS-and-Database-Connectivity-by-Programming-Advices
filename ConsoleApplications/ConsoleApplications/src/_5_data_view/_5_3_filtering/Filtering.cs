@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_3_count_and_sum_and_avg_and_min_and_max;
+namespace ConsoleApplications._5_data_view._5_3_filtering;
 
-public class CountAndSumAndAvgAndMinAndMax {
+public class Filtering {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -51,73 +51,82 @@ public class CountAndSumAndAvgAndMinAndMax {
         );
         employees.Rows.Add(
             4,
+            "Mohamed",
+            "Syria",
+            5120,
+            DateTime.Now
+        );
+        employees.Rows.Add(
+            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            5,
+            6,
             "Mustafa",
             "Iraq",
             4950,
             DateTime.Now
         );
 
-        foreach (DataRow employee in employees.Rows)
-            printEmployee(
-                employee
+        DataView employeesAsView = employees.DefaultView;
+
+        printEmployees(
+            "Before Filtering",
+            employeesAsView
+        );
+
+        employeesAsView.RowFilter = "Country = 'Syria'";
+
+        printEmployees(
+            "After Filtering",
+            employeesAsView
+        );
+    }
+
+    private static void printEmployees(
+        string   title,
+        DataView employees
+    ) {
+        Console.WriteLine(
+            new string(
+                '-',
+                30
+            ) + Environment.NewLine
+        );
+
+        Console.WriteLine(
+            title + Environment.NewLine
+        );
+
+        if (employees.Count > 0)
+            for (
+                int index = 0;
+                index < employees.Count;
+                index++
+            )
+                printEmployee(
+                    employees,
+                    index
+                );
+        else
+            Console.WriteLine(
+                "Nothing to Show!" + Environment.NewLine
             );
 
         Console.WriteLine(
             new string(
                 '-',
                 30
-            )
-        );
-
-        int count = employees.Rows.Count;
-        double totalSalaries = Convert.ToDouble(
-            employees.Compute(
-                "SUM(Salary)",
-                string.Empty
-            )
-        );
-        double averageSalaries = Convert.ToDouble(
-            employees.Compute(
-                "AVG(Salary)",
-                string.Empty
-            )
-        );
-        double minimumSalaries = Convert.ToDouble(
-            employees.Compute(
-                "MIN(Salary)",
-                string.Empty
-            )
-        );
-        double maximumSalaries = Convert.ToDouble(
-            employees.Compute(
-                "MAX(Salary)",
-                string.Empty
-            )
-        );
-
-        Console.Write(
-            "Count: {0}"            + Environment.NewLine +
-            "Total Salaries: {1}"   + Environment.NewLine +
-            "Average Salaries: {2}" + Environment.NewLine +
-            "Minimum Salaries: {3}" + Environment.NewLine +
-            "Maximum Salaries: {4}" + Environment.NewLine,
-            count,
-            totalSalaries,
-            averageSalaries,
-            minimumSalaries,
-            maximumSalaries
+            ) + Environment.NewLine
         );
     }
 
     private static void printEmployee(
-        DataRow employee
+        DataView employee,
+        int      index
     ) {
         Console.WriteLine(
             "ID: {0}"      + Environment.NewLine +
@@ -125,11 +134,11 @@ public class CountAndSumAndAvgAndMinAndMax {
             "Country: {2}" + Environment.NewLine +
             "Salary: {3}"  + Environment.NewLine +
             "Date: {4}"    + Environment.NewLine,
-            employee["ID"],
-            employee["Name"],
-            employee["Country"],
-            employee["Salary"],
-            employee["Date"]
+            employee[index][0],
+            employee[index][1],
+            employee[index][2],
+            employee[index][3],
+            employee[index][4]
         );
     }
 }
