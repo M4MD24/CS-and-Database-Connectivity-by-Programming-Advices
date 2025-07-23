@@ -5,9 +5,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_3_parameterized_query_with_like;
 
 public class ParameterizedQueryWithLike {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         printContactsStartsWithInFirstName(
             "Contacts Starts with",
             "j"
@@ -70,7 +68,7 @@ public class ParameterizedQueryWithLike {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACTS_STARTS_WITH_IN_FIRST_NAME = """
                                                                  SELECT *
@@ -116,7 +114,7 @@ public class ParameterizedQueryWithLike {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACTS_ENDS_WITH_IN_FIRST_NAME = """
                                                                SELECT *
@@ -148,7 +146,7 @@ public class ParameterizedQueryWithLike {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACTS_CONTAINS_WITH_IN_FIRST_NAME = """
                                                                    SELECT *

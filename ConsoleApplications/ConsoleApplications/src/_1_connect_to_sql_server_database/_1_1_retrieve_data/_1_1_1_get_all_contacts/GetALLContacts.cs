@@ -7,12 +7,11 @@ namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_da
 public class GetAllContacts {
     public static void printAllContacts() {
         Console.WriteLine(
-            "~{ All Contacts }~" + Environment.NewLine +
-            ""
+            "~{ All Contacts }~" + Environment.NewLine
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_ALL_CONTACTS = "SELECT * FROM Contacts";
         const string QUERY               = SELECT_ALL_CONTACTS;
@@ -68,9 +67,7 @@ public class GetAllContacts {
         );
     }
 
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         printAllContacts();
     }
 }

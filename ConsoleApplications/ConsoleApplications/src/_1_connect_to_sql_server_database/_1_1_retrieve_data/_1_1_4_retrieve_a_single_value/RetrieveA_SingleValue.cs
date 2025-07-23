@@ -5,9 +5,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_4_retrieve_a_single_value;
 
 public class RetrieveA_SingleValue {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         Console.Write(
             "First Name: " +
             getFirstNameByContactID(
@@ -26,7 +24,7 @@ public class RetrieveA_SingleValue {
         );
 
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string SELECT_CONTACT_BY_CONTACT_ID = """
                                                     SELECT FirstName

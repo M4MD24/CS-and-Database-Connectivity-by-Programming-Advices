@@ -5,9 +5,7 @@ using ConsoleApplications.Utilities;
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_4_update_data;
 
 public class UpdateData {
-    public static void main(
-        string[] args
-    ) {
+    public static void main() {
         updateContactByContactID(
             2,
             new Contact(
@@ -26,7 +24,7 @@ public class UpdateData {
         Contact contact
     ) {
         SqlConnection sqlConnection = new SqlConnection(
-            Constants.CONNECTIVITY
+            Constants.DATABASE_CONNECTIVITY
         );
         const string UPDATE_DATA = """
                                    UPDATE Contacts

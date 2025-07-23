@@ -108,7 +108,7 @@ partial class Main {
             4
         );
         // 
-        // main
+        // Main
         // 
         AutoScaleDimensions = new System.Drawing.SizeF(
             7F,
@@ -128,7 +128,6 @@ partial class Main {
         Controls.Add(
             contactList
         );
-        Name          =  "main";
         StartPosition =  System.Windows.Forms.FormStartPosition.CenterScreen;
         Text          =  "Main";
         Load          += main_Load;
