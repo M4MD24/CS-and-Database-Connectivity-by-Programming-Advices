@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_6_delete;
+namespace ConsoleApplications._4_datatables._4_7_update;
 
-public class Delete {
-    public static void main() {
+public class update {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -72,7 +72,7 @@ public class Delete {
         );
 
         printEmployees(
-            "Before Delete",
+            "Before Update",
             ref employees
         );
 
@@ -81,13 +81,13 @@ public class Delete {
             FILTER
         );
 
-        foreach (DataRow filteredEmployee in filteredEmployees)
-            filteredEmployee.Delete();
-
-        // employees.AcceptChanges(); // To apply changes to the database online, if you are offline you will not need it
+        foreach (DataRow filteredEmployee in filteredEmployees) {
+            filteredEmployee["Name"]    = "Mahmoud";
+            filteredEmployee["Country"] = "Egypt";
+        }
 
         printEmployees(
-            "After Delete",
+            "After Update",
             ref employees
         );
     }
