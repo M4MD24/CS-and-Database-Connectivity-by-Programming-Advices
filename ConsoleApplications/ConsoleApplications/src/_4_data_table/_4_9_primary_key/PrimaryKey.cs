@@ -1,88 +1,70 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_10_auto_increment_and_others;
+namespace ConsoleApplications._4_data_table._4_9_primary_key;
 
-public class AutoIncrementAndOthers {
-    public static void Main() {
+public class PrimaryKey {
+    public static void main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
-            defineColumn(
-                "ID",
-                typeof(int),
-                true,
-                caption : "Employee ID",
-                isReadOnly : true,
-                isUnique : true
-            )
+            "ID",
+            typeof(int)
         );
         employees.Columns.Add(
-            defineColumn(
-                "Name",
-                typeof(string),
-                caption : "Employee Name"
-            )
+            "Name",
+            typeof(string)
         );
         employees.Columns.Add(
-            defineColumn(
-                "Country",
-                typeof(string),
-                caption : "Employee Country"
-            )
+            "Country",
+            typeof(string)
         );
         employees.Columns.Add(
-            defineColumn(
-                "Salary",
-                typeof(double),
-                caption : "Employee Salary"
-            )
+            "Salary",
+            typeof(double)
         );
         employees.Columns.Add(
-            defineColumn(
-                "Date",
-                typeof(DateTime),
-                caption : "Employee Date"
-            )
+            "Date",
+            typeof(DateTime)
         );
 
         employees.Rows.Add(
-            null,
+            1,
             "Ahmad",
             "Egypt",
             5000,
             DateTime.Now
         );
         employees.Rows.Add(
-            null,
+            2,
             "Omar",
             "Saudi Arabia",
             5200,
             DateTime.Now
         );
         employees.Rows.Add(
-            null,
+            3,
             "Youssef",
             "Syria",
             4800,
             DateTime.Now
         );
         employees.Rows.Add(
-            null,
+            4,
             "Mohamed",
             "Syria",
             5120,
             DateTime.Now
         );
         employees.Rows.Add(
-            null,
+            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            null,
+            6,
             "Mustafa",
             "Iraq",
             4950,
@@ -97,28 +79,6 @@ public class AutoIncrementAndOthers {
             "Employee List",
             ref employees
         );
-    }
-
-    private static DataColumn defineColumn(
-        string name,
-        Type   type,
-        bool   isAutoIncrement   = false,
-        int    autoIncrementSeed = 1,
-        int    autoIncrementStep = 1,
-        string caption           = "",
-        bool   isReadOnly        = false,
-        bool   isUnique          = false
-    ) {
-        DataColumn dataColumn = new DataColumn();
-        dataColumn.ColumnName        = name;
-        dataColumn.DataType          = type;
-        dataColumn.AutoIncrement     = isAutoIncrement;
-        dataColumn.AutoIncrementSeed = autoIncrementSeed;
-        dataColumn.AutoIncrementStep = autoIncrementStep;
-        dataColumn.Caption           = caption;
-        dataColumn.ReadOnly          = isReadOnly;
-        dataColumn.Unique            = isUnique;
-        return dataColumn;
     }
 
     private static void printEmployees(

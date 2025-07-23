@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_7_update;
+namespace ConsoleApplications._4_data_table._4_7_update;
 
 public class update {
     public static void main() {

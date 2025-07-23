@@ -1,7 +1,7 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_6_delete;
+namespace ConsoleApplications._4_data_table._4_6_delete;
 
 public class Delete {
     public static void main() {

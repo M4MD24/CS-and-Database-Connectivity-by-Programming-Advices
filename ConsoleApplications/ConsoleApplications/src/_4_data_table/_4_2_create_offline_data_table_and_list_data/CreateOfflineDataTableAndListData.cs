@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_4_filter_data;
+namespace ConsoleApplications._4_data_table._4_2_create_offline_data_table_and_list_data;
 
-public class FilterData {
+public class CreateOfflineDataTableAndListData {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -51,20 +51,13 @@ public class FilterData {
         );
         employees.Rows.Add(
             4,
-            "Mohamed",
-            "Syria",
-            5120,
-            DateTime.Now
-        );
-        employees.Rows.Add(
-            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            6,
+            5,
             "Mustafa",
             "Iraq",
             4950,
@@ -75,62 +68,6 @@ public class FilterData {
             printEmployee(
                 employee
             );
-
-        Console.WriteLine(
-            new string(
-                '-',
-                30
-            ) + Environment.NewLine
-        );
-
-        const string FILTER = "Country = 'Syria'";
-        DataRow[] filteredEmployees = employees.Select(
-            FILTER
-        );
-
-        foreach (DataRow filteredEmployee in filteredEmployees)
-            printEmployee(
-                filteredEmployee
-            );
-
-        int count = filteredEmployees.Length;
-        double totalSalaries = Convert.ToDouble(
-            employees.Compute(
-                "SUM(Salary)",
-                FILTER
-            )
-        );
-        double averageSalaries = Convert.ToDouble(
-            employees.Compute(
-                "AVG(Salary)",
-                FILTER
-            )
-        );
-        double minimumSalaries = Convert.ToDouble(
-            employees.Compute(
-                "MIN(Salary)",
-                FILTER
-            )
-        );
-        double maximumSalaries = Convert.ToDouble(
-            employees.Compute(
-                "MAX(Salary)",
-                FILTER
-            )
-        );
-
-        Console.Write(
-            "Count: {0}"            + Environment.NewLine +
-            "Total Salaries: {1}"   + Environment.NewLine +
-            "Average Salaries: {2}" + Environment.NewLine +
-            "Minimum Salaries: {3}" + Environment.NewLine +
-            "Maximum Salaries: {4}" + Environment.NewLine,
-            count,
-            totalSalaries,
-            averageSalaries,
-            minimumSalaries,
-            maximumSalaries
-        );
     }
 
     private static void printEmployee(
@@ -148,5 +85,20 @@ public class FilterData {
             employee["Salary"],
             employee["Date"]
         );
+
+        /* Another Solution
+        Console.WriteLine(
+            "ID: {0}" + Environment.NewLine +
+            "ID: {1}" + Environment.NewLine +
+            "ID: {2}" + Environment.NewLine +
+            "ID: {3}" + Environment.NewLine +
+            "ID: {4}" + Environment.NewLine,
+            employee[0],
+            employee[1],
+            employee[2],
+            employee[3],
+            employee[4]
+        );
+        */
     }
 }

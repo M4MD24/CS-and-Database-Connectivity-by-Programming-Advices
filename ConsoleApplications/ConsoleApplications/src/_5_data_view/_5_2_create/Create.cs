@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_2_create_offline_data_table_and_list_data;
+namespace ConsoleApplications._5_data_view._5_2_create;
 
-public class CreateOfflineDataTableAndListData {
+public class Create {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -64,14 +64,23 @@ public class CreateOfflineDataTableAndListData {
             DateTime.Now
         );
 
-        foreach (DataRow employee in employees.Rows)
+        DataView employeesAsView = employees.DefaultView;
+
+        for (
+            int index = 0;
+            index < employeesAsView.Count;
+            index++
+        ) {
             printEmployee(
-                employee
+                employeesAsView,
+                index
             );
+        }
     }
 
     private static void printEmployee(
-        DataRow employee
+        DataView employee,
+        int      index
     ) {
         Console.WriteLine(
             "ID: {0}"      + Environment.NewLine +
@@ -79,26 +88,11 @@ public class CreateOfflineDataTableAndListData {
             "Country: {2}" + Environment.NewLine +
             "Salary: {3}"  + Environment.NewLine +
             "Date: {4}"    + Environment.NewLine,
-            employee["ID"],
-            employee["Name"],
-            employee["Country"],
-            employee["Salary"],
-            employee["Date"]
+            employee[index][0],
+            employee[index][1],
+            employee[index][2],
+            employee[index][3],
+            employee[index][4]
         );
-
-        /* Another Solution
-        Console.WriteLine(
-            "ID: {0}" + Environment.NewLine +
-            "ID: {1}" + Environment.NewLine +
-            "ID: {2}" + Environment.NewLine +
-            "ID: {3}" + Environment.NewLine +
-            "ID: {4}" + Environment.NewLine,
-            employee[0],
-            employee[1],
-            employee[2],
-            employee[3],
-            employee[4]
-        );
-        */
     }
 }

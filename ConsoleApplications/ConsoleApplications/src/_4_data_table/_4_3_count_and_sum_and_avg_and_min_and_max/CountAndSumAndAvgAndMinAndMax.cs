@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_9_primary_key;
+namespace ConsoleApplications._4_data_table._4_3_count_and_sum_and_avg_and_min_and_max;
 
-public class PrimaryKey {
+public class CountAndSumAndAvgAndMinAndMax {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -51,66 +51,68 @@ public class PrimaryKey {
         );
         employees.Rows.Add(
             4,
-            "Mohamed",
-            "Syria",
-            5120,
-            DateTime.Now
-        );
-        employees.Rows.Add(
-            5,
             "Ibrahim",
             "Jordan",
             5100,
             DateTime.Now
         );
         employees.Rows.Add(
-            6,
+            5,
             "Mustafa",
             "Iraq",
             4950,
             DateTime.Now
         );
 
-        DataColumn[] primaryKeyColumns = new DataColumn[1];
-        primaryKeyColumns[0] = employees.Columns["ID"]!;
-        employees.PrimaryKey = primaryKeyColumns;
-
-        printEmployees(
-            "Employee List",
-            ref employees
-        );
-    }
-
-    private static void printEmployees(
-        string        title,
-        ref DataTable employees
-    ) {
-        Console.WriteLine(
-            new string(
-                '-',
-                30
-            ) + Environment.NewLine
-        );
-
-        Console.WriteLine(
-            title + Environment.NewLine
-        );
-
-        if (employees.Rows.Count > 0)
-            foreach (DataRow employee in employees.Rows)
-                printEmployee(
-                    employee
-                );
-        else
-            Console.WriteLine(
-                "Nothing to Show!" + Environment.NewLine
+        foreach (DataRow employee in employees.Rows)
+            printEmployee(
+                employee
             );
 
         Console.WriteLine(
             new string(
                 '-',
                 30
-            ) + Environment.NewLine
+            )
+        );
+
+        int count = employees.Rows.Count;
+        double totalSalaries = Convert.ToDouble(
+            employees.Compute(
+                "SUM(Salary)",
+                string.Empty
+            )
+        );
+        double averageSalaries = Convert.ToDouble(
+            employees.Compute(
+                "AVG(Salary)",
+                string.Empty
+            )
+        );
+        double minimumSalaries = Convert.ToDouble(
+            employees.Compute(
+                "MIN(Salary)",
+                string.Empty
+            )
+        );
+        double maximumSalaries = Convert.ToDouble(
+            employees.Compute(
+                "MAX(Salary)",
+                string.Empty
+            )
+        );
+
+        Console.Write(
+            "Count: {0}"            + Environment.NewLine +
+            "Total Salaries: {1}"   + Environment.NewLine +
+            "Average Salaries: {2}" + Environment.NewLine +
+            "Minimum Salaries: {3}" + Environment.NewLine +
+            "Maximum Salaries: {4}" + Environment.NewLine,
+            count,
+            totalSalaries,
+            averageSalaries,
+            minimumSalaries,
+            maximumSalaries
         );
     }
 

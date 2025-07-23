@@ -1,9 +1,9 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_5_sorting;
+namespace ConsoleApplications._4_data_table._4_8_clear;
 
-public class Sorting {
+public class Clear {
     public static void main() {
         DataTable employees = new DataTable();
 
@@ -72,23 +72,14 @@ public class Sorting {
         );
 
         printEmployees(
-            "Before Sort",
+            "Before Clear",
             ref employees
         );
 
-        employees.DefaultView.Sort = "Name";
-        employees                  = employees.DefaultView.ToTable();
+        employees.Clear();
 
         printEmployees(
-            "After Sort by Name Ascending",
-            ref employees
-        );
-
-        employees.DefaultView.Sort = "ID DESC";
-        employees                  = employees.DefaultView.ToTable();
-
-        printEmployees(
-            "After Sort by ID Descending",
+            "After Clear",
             ref employees
         );
     }
@@ -108,9 +99,14 @@ public class Sorting {
             title + Environment.NewLine
         );
 
-        foreach (DataRow employee in employees.Rows)
-            printEmployee(
-                employee
+        if (employees.Rows.Count > 0)
+            foreach (DataRow employee in employees.Rows)
+                printEmployee(
+                    employee
+                );
+        else
+            Console.WriteLine(
+                "Nothing to Show!" + Environment.NewLine
             );
 
         Console.WriteLine(
