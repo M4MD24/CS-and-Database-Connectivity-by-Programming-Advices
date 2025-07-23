@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_8_clear;
+namespace ConsoleApplications._4_datatables._4_9_primary_key;
 
-public class Clear {
-    public static void main() {
+public class PrimaryKey {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -71,15 +71,12 @@ public class Clear {
             DateTime.Now
         );
 
-        printEmployees(
-            "Before Clear",
-            ref employees
-        );
-
-        employees.Clear();
+        DataColumn[] primaryKeyColumns = new DataColumn[1];
+        primaryKeyColumns[0] = employees.Columns["ID"]!;
+        employees.PrimaryKey = primaryKeyColumns;
 
         printEmployees(
-            "After Clear",
+            "Employee List",
             ref employees
         );
     }
