@@ -1,6 +1,6 @@
 using System;
 using System.Data.SqlClient;
-using ConsoleApplications._1_connect_to_sql_server_database.Utilities;
+using ConsoleApplications.Utilities;
 
 namespace ConsoleApplications._1_connect_to_sql_server_database._1_1_retrieve_data._1_1_3_parameterized_query_with_like;
 
