@@ -39,6 +39,7 @@
             7. [Update](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_7_update)
             8. [Clear](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_8_clear)
             9. [Primary Key](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_9_primary_key)
+            10. [Auto Increment and Others](ConsoleApplications/ConsoleApplications/src/_4_datatables/_4_10_auto_increment_and_others)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)
