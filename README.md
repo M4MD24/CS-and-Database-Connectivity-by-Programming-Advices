@@ -48,6 +48,7 @@
         6. DataSet
             1. What is DataSet?
             2. [Create](ConsoleApplications/ConsoleApplications/src/_6_data_set/_6_2_create)
+            3. [Access Database Inside DataSet by Name](ConsoleApplications/ConsoleApplications/src/_6_data_set/_6_3_access_database_inside_data_set_by_name)
 2. [Projects](Projects)
     1. [Management System](Projects/ManagementSystem)
         1. [Contacts](Projects/ManagementSystem/Contacts)

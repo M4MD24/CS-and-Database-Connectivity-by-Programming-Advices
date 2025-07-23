@@ -1,12 +1,16 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._6_data_set._6_2_create;
+namespace ConsoleApplications._6_data_set._6_3_access_database_inside_data_set_by_name;
 
-public class Create {
-    public static void main() {
-        DataTable employees   = new(),
-                  departments = new();
+public class AccessDatabaseInsideDataSetByName {
+    public static void Main() {
+        DataTable employees = new(
+                      "Employees"
+                  ),
+                  departments = new(
+                      "Departments"
+                  );
 
         employees.Columns.Add(
             "ID",
@@ -99,7 +103,7 @@ public class Create {
             "Employees:"
         );
         printEmployees(
-            dataSet.Tables[0]
+            dataSet.Tables["Employees"]!
         );
 
         Console.WriteLine();
@@ -108,7 +112,7 @@ public class Create {
             "Departments:"
         );
         printDepartments(
-            dataSet.Tables[1]
+            dataSet.Tables["Departments"]!
         );
     }
 
