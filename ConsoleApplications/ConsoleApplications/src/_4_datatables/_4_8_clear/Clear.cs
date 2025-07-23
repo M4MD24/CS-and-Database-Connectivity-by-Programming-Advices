@@ -1,10 +1,10 @@
 using System;
 using System.Data;
 
-namespace ConsoleApplications._4_datatables._4_7_update;
+namespace ConsoleApplications._4_datatables._4_8_clear;
 
-public class update {
-    public static void main() {
+public class Clear {
+    public static void Main() {
         DataTable employees = new DataTable();
 
         employees.Columns.Add(
@@ -72,22 +72,14 @@ public class update {
         );
 
         printEmployees(
-            "Before Update",
+            "Before Clear",
             ref employees
         );
 
-        const string FILTER = "ID = 3";
-        DataRow[] filteredEmployees = employees.Select(
-            FILTER
-        );
-
-        foreach (DataRow filteredEmployee in filteredEmployees) {
-            filteredEmployee["Name"]    = "Mahmoud";
-            filteredEmployee["Country"] = "Egypt";
-        }
+        employees.Clear();
 
         printEmployees(
-            "After Update",
+            "After Clear",
             ref employees
         );
     }
@@ -107,9 +99,14 @@ public class update {
             title + Environment.NewLine
         );
 
-        foreach (DataRow employee in employees.Rows)
-            printEmployee(
-                employee
+        if (employees.Rows.Count > 0)
+            foreach (DataRow employee in employees.Rows)
+                printEmployee(
+                    employee
+                );
+        else
+            Console.WriteLine(
+                "Nothing to Show!" + Environment.NewLine
             );
 
         Console.WriteLine(
