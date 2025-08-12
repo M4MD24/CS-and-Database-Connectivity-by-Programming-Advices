@@ -12,7 +12,6 @@ public class ContactDataAccess {
         Update = 1
     }
 
-
     public static Contact? getContactByContactID(
         ref int targetContactID
     ) {
