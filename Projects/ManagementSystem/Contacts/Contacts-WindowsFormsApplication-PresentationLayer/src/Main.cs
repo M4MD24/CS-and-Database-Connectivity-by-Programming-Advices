@@ -56,7 +56,7 @@ public partial class Main : Form {
             Mode.Information,
             contactID
         );
-        contactInformation.FormClosed += contactForm_FormClosed!;
+        contactInformation.FormClosed += contactInformationForm_FormClosed!;
         contactInformation.Show();
     }
 
@@ -71,7 +71,7 @@ public partial class Main : Form {
             Mode.Update,
             contactID
         );
-        contactInformation.FormClosed += contactForm_FormClosed!;
+        contactInformation.FormClosed += contactInformationForm_FormClosed!;
         contactInformation.Show();
     }
 
@@ -106,11 +106,11 @@ public partial class Main : Form {
         ContactInformation contactInformation = new(
             Mode.Add
         );
-        contactInformation.FormClosed += contactForm_FormClosed!;
+        contactInformation.FormClosed += contactInformationForm_FormClosed!;
         contactInformation.Show();
     }
 
-    private void contactForm_FormClosed(
+    private void contactInformationForm_FormClosed(
         object              sender,
         FormClosedEventArgs e
     ) {
